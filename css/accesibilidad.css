@@ -1,0 +1,84 @@
+#ajustes-container {
+  display: inline-block;
+  position: relative;
+}
+
+#ajustesBtn {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: .6em 1.2em;
+  border-radius: .5em;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin: 0 1em;
+  transition: background .2s;
+}
+
+#ajustesBtn:hover, #ajustesBtn:focus {
+  background: #005f73;
+}
+
+/* Menú de accesibilidad tipo popup */
+#accesibilidad {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: #f2f2f2;
+  border-radius: 0.7em;
+  box-shadow: 0 8px 32px #0002;
+  gap: .5em;
+  padding: 1em;
+  position: absolute;
+  z-index: 100;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 270px;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .2s, visibility .2s;
+}
+
+#accesibilidad.oculto {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#accesibilidad button {
+  background: #457b9d;
+  color: #fff;
+  border: none;
+  padding: .5em 1em;
+  border-radius: .4em;
+  cursor: pointer;
+  font-size: 1em;
+  margin: 2px 0;
+  transition: background .2s;
+}
+#accesibilidad button:hover, #accesibilidad button:focus {
+  background: #1d3557;
+}
+
+/* ... y también las clases especiales: daltonico, cursor-grande, resaltado, img.oculta ... */
+
+.daltonico {
+  --bg-color: #ffefd5;
+  --text-color: #005f73;
+}
+
+.cursor-grande {
+  cursor: pointer !important;
+}
+
+a.resaltado {
+  background: #ffd166;
+  color: #222 !important;
+  font-size: 1.2em;
+}
+
+img.oculta {
+  display: none !important;
+}
