@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <title>ODS Acción por el Clima | Inicio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Estilos generales -->
   <link rel="stylesheet" href="css/styles.css">
+  <!-- Estilos de ajustes/accesibilidad -->
   <link rel="stylesheet" href="css/accesibilidad.css">
+  <link rel="icon" href="data:,">
 </head>
 <body>
   <header>
@@ -17,17 +20,19 @@
         <li><a href="cv.html">CV</a></li>
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
+      <!-- Aquí se inyectará el menú de ajustes -->
       <div id="ajustes-inject"></div>
     </nav>
   </header>
 
   <main>
-    <section>
+    <section class="card">
       <h1>ODS 13: Acción por el Clima</h1>
       <p>
-        Bienvenido al sitio dedicado a concientizar sobre el cambio climático y cómo todos podemos contribuir a combatirlo. Aquí encontrarás información clara y acciones cotidianas para marcar la diferencia.
+        Bienvenido al sitio dedicado a concientizar sobre el cambio climático y cómo todos podemos contribuir a combatirlo.  
+        Aquí encontrarás información clara y acciones cotidianas para marcar la diferencia.
       </p>
-      <img src="assets/clima.jpg" alt="Ilustración sobre el cambio climático" width="400">
+      <img src="assets/clima.jpg" alt="Ilustración sobre el cambio climático" width="400" style="max-width: 100%; border-radius: 1em; margin-top: 1em;">
     </section>
   </main>
 
@@ -35,8 +40,8 @@
     <p>&copy; 2024 Tu Nombre | ODS Acción por el Clima</p>
   </footer>
 
-  <!-- Solo este script -->
   <script>
+    // Inyecta el menú de ajustes y luego el JS de accesibilidad
     fetch('ajustes.html')
       .then(res => res.text())
       .then(html => {
