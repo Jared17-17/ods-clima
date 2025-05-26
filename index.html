@@ -34,18 +34,17 @@
   <footer>
     <p>&copy; 2024 Tu Nombre | ODS Acción por el Clima</p>
   </footer>
-  <script>
-    // Inyecta el HTML y luego CARGA el JS cuando ya está en el DOM
-    fetch('ajustes.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('ajustes-inject').outerHTML = html;
-        // Solo después de inyectar el HTML, carga y ejecuta el JS
-        var script = document.createElement('script');
-        script.src = 'js/accesibilidad.js';
-        script.defer = true;
-        document.body.appendChild(script);
-      });
-  </script>
+<script>
+  fetch('ajustes.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('ajustes-inject').outerHTML = html;
+      const script = document.createElement('script');
+      script.src = 'js/accesibilidad.js';
+      document.body.appendChild(script);
+    });
+</script>
+<script src="seguridad/seguridad.js" defer></script>
+
 </body>
 </html>
