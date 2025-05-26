@@ -1,9 +1,77 @@
-#ajustes-container {
-  display: inline-block;
-  position: relative;
-  margin: 1.5em 0 1.5em 1em;
+/* Fondo desenfocado para el popup de ajustes */
+#ajustes-modal-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(44, 62, 80, 0.30);
+  backdrop-filter: blur(2.5px);
+  z-index: 9998;
+  display: none;
+  transition: opacity .2s;
+}
+#ajustes-modal-bg.visible {
+  display: block;
 }
 
+/* Contenedor centrado del menú de ajustes */
+#ajustes-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f8f8f8;
+  border-radius: 1.2em;
+  box-shadow: 0 8px 32px #0002;
+  padding: 2em 2em 1.5em 2em;
+  min-width: 290px;
+  width: 90vw;
+  max-width: 360px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.1em;
+  opacity: 1;
+  visibility: visible;
+}
+
+#ajustes-modal.oculto {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#ajustes-modal h2 {
+  margin: 0 0 1em 0;
+  font-size: 1.3em;
+  text-align: center;
+  color: #222;
+}
+
+#ajustes-modal .ajustes-botones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65em;
+}
+
+/* Botón para cerrar */
+#ajustesCerrar {
+  position: absolute;
+  top: 0.7em;
+  right: 1em;
+  background: #d90429;
+  color: #fff;
+  border: none;
+  border-radius: .4em;
+  padding: 0.4em 0.95em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background .2s;
+}
+#ajustesCerrar:hover, #ajustesCerrar:focus {
+  background: #900d09;
+}
+
+/* Botón principal de ajustes */
 #ajustesBtn {
   background: #333;
   color: #fff;
@@ -11,78 +79,164 @@
   padding: .6em 1.4em;
   border-radius: .6em;
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-family: inherit;
   font-weight: bold;
   letter-spacing: 1px;
   box-shadow: 0 2px 8px #0003;
   transition: background .2s;
+  margin: 1.2em 0 0 1.2em;
 }
 
 #ajustesBtn:hover, #ajustesBtn:focus {
   background: #005f73;
 }
 
-/* Menú emergente de ajustes */
-#accesibilidad {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background: #f2f2f2;
-  border-radius: 0.7em;
-  box-shadow: 0 8px 32px #0002;
-  gap: .5em;
-  padding: 1em;
-  position: absolute;
-  z-index: 100;
-  top: 120%;
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 290px;
-  justify-content: center;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity .2s, visibility .2s;
-}
-
-#accesibilidad.oculto {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-#accesibilidad button {
+#ajustes-modal .ajustes-botones button {
   background: #457b9d;
   color: #fff;
   border: none;
-  padding: .5em 1em;
+  padding: .7em 1.1em;
   border-radius: .4em;
   cursor: pointer;
-  font-size: 1em;
-  margin: 2px 0;
+  font-size: 1.08em;
+  margin: 0;
   transition: background .2s;
   font-family: inherit;
 }
-#accesibilidad button:hover, #accesibilidad button:focus {
+#ajustes-modal .ajustes-botones button:hover, 
+#ajustes-modal .ajustes-botones button:focus {
   background: #1d3557;
 }
 
-/* Clases para accesibilidad */
-.daltonico {
-  --bg-color: #ffefd5;
-  --text-color: #005f73;
+
+
+
+
+/* ----- MODOS DE ACCESIBILIDAD ----- */
+
+body.modo-oscuro {
+  --bg-color: #181a1b;
+  --text-color: #f2f2f2;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+body.modo-oscuro main,
+body.modo-oscuro .card {
+  background: #222326 !important;
+  color: #f2f2f2 !important;
+  box-shadow: 0 4px 24px #0009;
+}
+body.modo-oscuro header nav {
+  background: #23272f !important;
+}
+body.modo-oscuro footer {
+  background: #23272f !important;
+  color: #fff !important;
+}
+body.modo-oscuro #ajustes-modal {
+  background: #23272f !important;
+  color: #f2f2f2 !important;
 }
 
-.cursor-grande {
-  cursor: pointer !important;
+/* Alto contraste */
+body.alto-contraste {
+  --bg-color: #000 !important;
+  --text-color: #ff0 !important;
+  background: #000 !important;
+  color: #ff0 !important;
+}
+body.alto-contraste main,
+body.alto-contraste .card {
+  background: #000 !important;
+  color: #ff0 !important;
+  box-shadow: 0 4px 24px #0009;
+}
+body.alto-contraste header nav,
+body.alto-contraste footer,
+body.alto-contraste #ajustes-modal {
+  background: #000 !important;
+  color: #ff0 !important;
+}
+body.alto-contraste nav a {
+  color: #fff !important;
+  background: #000 !important;
+}
+body.alto-contraste nav a:hover, 
+body.alto-contraste nav a:focus {
+  color: #ff0 !important;
 }
 
-a.resaltado {
-  background: #ffd166;
+/* Modo daltonismo: escala de azules y naranjas seguros */
+body.daltonico {
+  --bg-color: #e3f6fd;
+  --text-color: #003049;
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+body.daltonico main,
+body.daltonico .card {
+  background: #f1faee !important;
+  color: #003049 !important;
+}
+body.daltonico header nav {
+  background: #2986a7 !important;
+}
+body.daltonico footer {
+  background: #2986a7 !important;
+  color: #fff !important;
+}
+body.daltonico #ajustes-modal {
+  background: #e3f6fd !important;
+  color: #003049 !important;
+}
+
+/* Modo combinados */
+body.modo-oscuro.alto-contraste {
+  --bg-color: #000 !important;
+  --text-color: #ff0 !important;
+  background: #000 !important;
+  color: #ff0 !important;
+}
+body.modo-oscuro.daltonico {
+  --bg-color: #07273d !important;
+  --text-color: #fff !important;
+  background: #07273d !important;
+  color: #fff !important;
+}
+body.alto-contraste.daltonico {
+  --bg-color: #003049 !important;
+  --text-color: #fff !important;
+  background: #003049 !important;
+  color: #fff !important;
+}
+
+/* Que botones sean legibles en cualquier modo */
+#ajustes-modal .ajustes-botones button {
+  color: #fff;
+  background: #457b9d;
+  border: none;
+}
+body.alto-contraste #ajustes-modal .ajustes-botones button {
+  background: #222;
+  color: #ff0;
+}
+body.daltonico #ajustes-modal .ajustes-botones button {
+  background: #ffb703;
+  color: #003049;
+}
+body.modo-oscuro #ajustes-modal .ajustes-botones button {
+  background: #12486b;
+  color: #fff;
+}
+
+
+a.resaltado, nav a.resaltado {
+  background: #ffd166 !important;
   color: #222 !important;
-  font-size: 1.2em;
-}
-
-img.oculta {
-  display: none !important;
+  font-size: 1.13em !important;
+  font-weight: bold !important;
+  border-radius: 0.3em;
+  pointer-events: none; /* Desactiva el click */
+  outline: 2px solid #333;
 }
