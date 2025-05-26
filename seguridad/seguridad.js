@@ -3,7 +3,7 @@
 (function seguridadWeb() {
   'use strict';
 
-  // 1. Evitar inspección con teclas rápidas comunes (F12, Ctrl+Shift+I, etc.)
+  // 1. Bloqueo de teclas comunes para inspección de código
   document.addEventListener('keydown', function (e) {
     if (
       e.key === 'F12' ||
@@ -14,28 +14,48 @@
     }
   });
 
-  // 2. Ocultar errores en consola (solo en producción)
-  if (location.hostname.includes('github.io')) {
+  // 2. Ocultar consola en producción
+  if (location.hostname.includes('github.io') || location.hostname.includes('wuaze.com')) {
     console.log = () => {};
-    console.error = () => {};
     console.warn = () => {};
+    console.error = () => {};
   }
 
-  // 3. Encabezados HTTP de seguridad (solo como referencia en consola, no se puede aplicar desde JS)
-  console.info('[Seguridad] Recuerda configurar estos headers desde el servidor si fuera posible:');
-  console.info(' - Content-Security-Policy');
-  console.info(' - X-Content-Type-Options: nosniff');
-  console.info(' - X-Frame-Options: DENY');
-  console.info(' - Referrer-Policy: no-referrer');
-  console.info(' - Strict-Transport-Security');
-
-  // 4. Anti-framing (clickjacking protection, por si algún iframe intenta incluir el sitio)
+  // 3. Prevenir framing (clickjacking)
   if (window.top !== window.self) {
     window.top.location = window.self.location;
   }
 
-  // 5. Advertencia si se detectan extensiones devtools
-  if (window.outerHeight - window.innerHeight > 100 || window.outerWidth - window.innerWidth > 100) {
-    console.warn('[Seguridad] Puede que las herramientas de desarrollo estén activas.');
+  // 4. Detectar apertura de DevTools (tamaño de ventana)
+  function devtoolsDetect() {
+    if (window.outerHeight - window.innerHeight > 100 || window.outerWidth - window.innerWidth > 100) {
+      console.warn('[Seguridad] Herramientas de desarrollo podrían estar activas.');
+    }
   }
+  window.addEventListener('resize', devtoolsDetect);
+  devtoolsDetect();
+
+  // 5. Prevenir arrastre de imágenes y texto
+  document.addEventListener('dragstart', e => e.preventDefault());
+  document.addEventListener('selectstart', e => e.preventDefault());
+
+  // 6. Advertencias de encabezados HTTP (informativo)
+  console.info('[Seguridad] Si tuvieras control de servidor, aplica estos encabezados HTTP:');
+  console.info('- Content-Security-Policy');
+  console.info('- Strict-Transport-Security');
+  console.info('- X-Frame-Options: DENY');
+  console.info('- X-Content-Type-Options: nosniff');
+  console.info('- Referrer-Policy: no-referrer');
+
+  // 7. Bloquear clic derecho (opcional, poco efectivo)
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
+  // 8. Redirigir desde dominios no permitidos (anti-hotlinking básico)
+  const dominioPermitido = ['jared17-17.github.io', 'odsclima.wuaze.com'];
+  if (!dominioPermitido.includes(location.hostname)) {
+    location.href = 'https://jared17-17.github.io/ods-clima/';
+  }
+
 })();

@@ -7,20 +7,23 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/accesibilidad.css">
   <link rel="icon" href="data:,">
+  <link rel="icon" href="favicon.png" type="image/png">
+
 </head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="cambio-climatico.html">¿Qué es?</a></li>
-        <li><a href="acciones.html">Acciones</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="index.html" aria-current="page">Inicio</a></li>
+        <li><a href="pages/cambio-climatico.html">¿Qué es?</a></li>
+        <li><a href="pages/acciones.html">Acciones</a></li>
+        <li><a href="pages/cv.html">CV</a></li>
+        <li><a href="pages/contacto.html">Contacto</a></li>
       </ul>
       <div id="ajustes-inject"></div>
     </nav>
   </header>
+
   <main>
     <section class="card">
       <h1 style="font-size: 2.2em; margin-bottom: 0.5em;">ODS 13: Acción por el Clima</h1>
@@ -31,20 +34,22 @@
       <img src="assets/clima.jpg" alt="Ilustración sobre el cambio climático" width="400" style="max-width: 100%; border-radius: 1em; margin-top: 1em;">
     </section>
   </main>
+
   <footer>
     <p>&copy; 2024 Tu Nombre | ODS Acción por el Clima</p>
   </footer>
-<script>
-  fetch('ajustes.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('ajustes-inject').outerHTML = html;
-      const script = document.createElement('script');
-      script.src = 'js/accesibilidad.js';
-      document.body.appendChild(script);
-    });
-</script>
-<script src="seguridad/seguridad.js" defer></script>
 
+  <!-- Scripts -->
+  <script src="seguridad/seguridad.js" defer></script>
+  <script>
+    fetch('ajustes.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('ajustes-inject').outerHTML = html;
+        const script = document.createElement('script');
+        script.src = 'js/accesibilidad.js';
+        document.body.appendChild(script);
+      });
+  </script>
 </body>
 </html>

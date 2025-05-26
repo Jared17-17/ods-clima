@@ -4,15 +4,17 @@
   <meta charset="UTF-8">
   <title>Contacto | ODS Acción por el Clima</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/accesibilidad.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/accesibilidad.css">
   <link rel="icon" href="data:,">
+  <link rel="icon" href="../favicon.png" type="image/png">
+
 </head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">Inicio</a></li>
+        <li><a href="../index.html">Inicio</a></li>
         <li><a href="cambio-climatico.html">¿Qué es?</a></li>
         <li><a href="acciones.html">Acciones</a></li>
         <li><a href="cv.html">CV</a></li>
@@ -21,13 +23,14 @@
       <div id="ajustes-inject"></div>
     </nav>
   </header>
+
   <main>
     <section class="card contact-card">
       <h1>Contacto</h1>
       <p>¿Tienes alguna pregunta, sugerencia o comentario? Rellena el siguiente formulario:</p>
       <form id="contactForm" method="POST" action="https://formsubmit.co/ccobian8@ucol.mx" autocomplete="off" novalidate>
         <div class="form-group">
-          <label for="nombre">Nombre completo *</label>
+          <label for="nombre">Nombre completo *</label> 
           <input type="text" id="nombre" name="nombre" required minlength="2" maxlength="60" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s\\.\\-']+$" autocomplete="off">
         </div>
         <div class="form-group">
@@ -38,24 +41,28 @@
           <label for="mensaje">Mensaje *</label>
           <textarea id="mensaje" name="mensaje" required minlength="10" maxlength="500"></textarea>
         </div>
+
         <div class="captcha-section">
           <div class="captcha-label-row">
             <label for="captchaImg" id="captchaImgLabel">Selecciona la hoja verde para continuar: *</label>
             <button type="button" id="daltonicoCaptcha" class="btn-daltonico" aria-pressed="false" title="¿Eres daltónico? Haz clic aquí para saltar este captcha">Modo daltonismo</button>
           </div>
           <div id="captchaImages" class="captcha-images">
-            <img src="assets/captcha1.png" data-correct="false" alt="Hoja seca">
-            <img src="assets/captcha2.png" data-correct="true" alt="Hoja verde">
-            <img src="assets/captcha3.png" data-correct="false" alt="Piedras">
+            <img src="../assets/captcha1.png" data-correct="false" alt="Hoja seca">
+            <img src="../assets/captcha2.png" data-correct="true" alt="Hoja verde">
+            <img src="../assets/captcha3.png" data-correct="false" alt="Piedras">
           </div>
           <input type="hidden" id="captchaImg" name="captchaImg" value="">
         </div>
+
         <div class="robot-checkbox" id="robotCheckboxBlock">
           <input type="checkbox" id="notRobot" name="notRobot" required>
           <label for="notRobot" tabindex="0"><span class="robot-icon">&#129302;</span> No soy un robot</label>
         </div>
-        <input type="hidden" name="_next" value="https://jared17-17.github.io/ods-clima/contacto.html?success">
+
+        <input type="hidden" name="_next" value="https://jared17-17.github.io/ods-clima/pages/contacto.html?success">
         <input type="hidden" name="_captcha" value="false">
+
         <div class="form-privacidad">
           <small>
             La información será enviada por correo electrónico y <b>no se almacena en ninguna base de datos</b>.<br>
@@ -63,10 +70,12 @@
             <b>Advertencia:</b> El envío no está cifrado de extremo a extremo, aunque la conexión es segura por HTTPS.
           </small>
         </div>
+
         <div id="formErrors" class="form-errors" style="display:none"></div>
         <button type="submit" class="btn-enviar">Enviar mensaje</button>
       </form>
     </section>
+
     <section class="card info-card">
       <h2>Información de seguridad</h2>
       <ul>
@@ -78,24 +87,24 @@
       </ul>
     </section>
   </main>
+
   <footer>
     <p>&copy; 2024 Tu Nombre | ODS Acción por el Clima</p>
   </footer>
+
   <script>
-    // Inyecta ajustes accesibilidad como en las otras vistas
-    fetch('ajustes.html')
+    fetch('../ajustes.html')
       .then(res => res.text())
       .then(html => {
         document.getElementById('ajustes-inject').outerHTML = html;
-        var script = document.createElement('script');
-        script.src = 'js/accesibilidad.js';
+        const script = document.createElement('script');
+        script.src = '../js/accesibilidad.js';
         document.body.appendChild(script);
       });
   </script>
-  <script src="js/captcha-img.js" defer></script>
-  <script src="js/captcha-check.js" defer></script>
-  <script src="js/contacto.js" defer></script>
-  <script src="seguridad/seguridad.js" defer></script>
-
+  <script src="../js/captcha-img.js" defer></script>
+  <script src="../js/captcha-check.js" defer></script>
+  <script src="../js/contacto.js" defer></script>
+  <script src="../seguridad/seguridad.js" defer></script>
 </body>
 </html>
