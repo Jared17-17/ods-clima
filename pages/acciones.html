@@ -5,7 +5,7 @@
   <title>Acciones | ODS Acción por el Clima</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- estilos globales y propios -->
+  <!--  estilos globales + propios  -->
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/acciones.css">
   <link rel="stylesheet" href="../css/accesibilidad.css">
@@ -13,7 +13,7 @@
   <link rel="icon" href="../favicon.png" type="image/png">
 </head>
 <body>
-  <!-- NAV idéntico a las demás vistas -->
+  <!-- ========== NAV ========== -->
   <header>
     <nav>
       <ul>
@@ -27,29 +27,28 @@
     </nav>
   </header>
 
+  <!-- ========== MAIN ========== -->
   <main>
-    <!-- HERO / introducción -->
+    <!-- Hero -->
     <section class="card hero">
-      <div class="hero-txt">
-        <h1>Acciones diarias para un futuro sostenible</h1>
-        <p>
-          Aquí encontrarás sugerencias sencillas y prácticas para reducir tu huella de carbono
-          <b>en casa, en el transporte, en tu alimentación y en la comunidad</b>.
-          Filtra por categoría y ¡pon manos a la obra!
-        </p>
-      </div>
+      <h1>Acciones diarias para un futuro sostenible</h1>
+      <p>
+        Descubre recomendaciones sencillas para reducir tu huella de carbono
+        <b>en casa, en el transporte, en tu alimentación y en la comunidad.</b>
+        Selecciona una categoría y comienza hoy mismo.
+      </p>
     </section>
 
     <!-- Botones de filtro -->
-    <section class="filtros card">
-      <button class="btn-filtro activo" data-filtro="todos">Todas</button>
-      <button class="btn-filtro" data-filtro="hogar">Hogar</button>
-      <button class="btn-filtro" data-filtro="transporte">Transporte</button>
-      <button class="btn-filtro" data-filtro="alimentacion">Alimentación</button>
-      <button class="btn-filtro" data-filtro="comunidad">Comunidad</button>
+    <section class="card filtros">
+      <button class="btn-filtro activo" data-filtro="todos"        aria-pressed="true">Todas</button>
+      <button class="btn-filtro"        data-filtro="hogar"        aria-pressed="false">Hogar</button>
+      <button class="btn-filtro"        data-filtro="transporte"   aria-pressed="false">Transporte</button>
+      <button class="btn-filtro"        data-filtro="alimentacion" aria-pressed="false">Alimentación</button>
+      <button class="btn-filtro"        data-filtro="comunidad"    aria-pressed="false">Comunidad</button>
     </section>
 
-    <!-- GRID de acciones -->
+    <!-- Grid de acciones -->
     <section class="grid-acciones">
       <!-- Hogar -->
       <article class="accion-card" data-cat="hogar">
@@ -70,7 +69,7 @@
 
       <article class="accion-card" data-cat="transporte">
         <h2>Usa la bici</h2>
-        <p>Para trayectos cortos elige bicicleta o caminar: cero emisiones, más salud.</p>
+        <p>Para trayectos cortos elige bicicleta o caminar: cero emisiones y más salud.</p>
       </article>
 
       <!-- Alimentación -->
@@ -97,17 +96,19 @@
     </section>
   </main>
 
+  <!-- ========== FOOTER ========== -->
   <footer>
     <p>&copy; 2024 Tu Nombre | ODS 13 Acción por el Clima</p>
   </footer>
 
-  <!-- Animación de entrada + lógica de filtros + ajustes + seguridad -->
+  <!-- ========== SCRIPTS ========== -->
+  <script src="../js/device-detect.js"></script>
+  <script src="../js/performance-enhance.js" defer></script>
   <script src="../js/animacion-vista.js"></script>
   <script src="../js/acciones.js"></script>
   <script src="../seguridad/seguridad.js" defer></script>
-  <!-- en las páginas dentro de /pages/ -->
-<script src="../js/device-detect.js"></script>
-<script src="../js/performance-enhance.js" defer></script>
+
+  <!-- botón de ajustes -->
   <script>
     fetch('../ajustes.html')
       .then(r => r.text())

@@ -1,19 +1,28 @@
-// Lógica de filtrado de tarjetas por categoría
+/* acciones.js
+   Filtra tarjetas por categoría y gestiona estado accesible de botones
+*/
 document.addEventListener('DOMContentLoaded', () => {
-  const btns = document.querySelectorAll('.btn-filtro');
-  const cards = document.querySelectorAll('.accion-card');
 
-  btns.forEach(btn => {
+  const buttons = document.querySelectorAll('.btn-filtro');
+  const cards   = document.querySelectorAll('.accion-card');
+
+  function aplicarFiltro(cat){
+    cards.forEach(c => {
+      const mostrar = cat === 'todos' || c.dataset.cat === cat;
+      c.style.display = mostrar ? 'block' : 'none';
+    });
+  }
+
+  buttons.forEach(btn => {
     btn.addEventListener('click', () => {
-      // cambia botón activo
-      btns.forEach(b => b.classList.remove('activo'));
+      // cambia botón activo + aria-pressed
+      buttons.forEach(b => { b.classList.remove('activo'); b.setAttribute('aria-pressed','false'); });
       btn.classList.add('activo');
+      btn.setAttribute('aria-pressed','true');
 
-      const filtro = btn.dataset.filtro;
-      cards.forEach(card => {
-        card.style.display =
-          filtro === 'todos' || card.dataset.cat === filtro ? 'block' : 'none';
-      });
+      aplicarFiltro(btn.dataset.filtro);
     });
   });
+
+  aplicarFiltro('todos'); // estado inicial
 });
