@@ -4,12 +4,16 @@
   <meta charset="UTF-8">
   <title>Contacto | ODS Acción por el Clima</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/contacto.css">
+
+  <!--  Estilos globales y específicos -->
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/contacto.css">
   <link rel="stylesheet" href="../css/accesibilidad.css">
+
   <link rel="icon" href="../favicon.png" type="image/png">
 </head>
 <body>
+  <!-- ========== HEADER ========== -->
   <header>
     <nav>
       <ul>
@@ -23,93 +27,126 @@
     </nav>
   </header>
 
-  <main>
-    <section class="card contact-card">
-      <h1>Contacto</h1>
-      <p>¿Tienes alguna pregunta, sugerencia o comentario? Rellena el siguiente formulario:</p>
-      <form id="contactForm" method="POST" action="https://formsubmit.co/ccobian8@ucol.mx" autocomplete="off" novalidate>
-        <div class="form-group">
-          <label for="nombre">Nombre completo *</label> 
-          <input type="text" id="nombre" name="nombre" required minlength="2" maxlength="60" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s\\.\\-']+$" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label for="email">Correo electrónico *</label>
-          <input type="email" id="email" name="email" required maxlength="100" pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label for="mensaje">Mensaje *</label>
-          <textarea id="mensaje" name="mensaje" required minlength="10" maxlength="500"></textarea>
-        </div>
-
-        <div class="captcha-section">
-          <div class="captcha-label-row">
-            <label for="captchaImg" id="captchaImgLabel">Selecciona la hoja verde para continuar: *</label>
-            <button type="button" id="daltonicoCaptcha" class="btn-daltonico" aria-pressed="false" title="¿Eres daltónico? Haz clic aquí para saltar este captcha">Modo daltonismo</button>
-          </div>
-          <div id="captchaImages" class="captcha-images">
-            <img src="../assets/captcha1.png" data-correct="false" alt="Hoja seca">
-            <img src="../assets/captcha2.png" data-correct="true" alt="Hoja verde">
-            <img src="../assets/captcha3.png" data-correct="false" alt="Piedras">
-          </div>
-          <input type="hidden" id="captchaImg" name="captchaImg" value="">
-        </div>
-
-        <div class="robot-checkbox" id="robotCheckboxBlock">
-          <input type="checkbox" id="notRobot" name="notRobot" required>
-          <label for="notRobot" tabindex="0"><span class="robot-icon">&#129302;</span> No soy un robot</label>
-        </div>
-
-        <input type="hidden" name="_next" value="https://jared17-17.github.io/ods-clima/pages/contacto.html?success">
-        <input type="hidden" name="_captcha" value="false">
-
-        <div class="form-privacidad">
-          <small>
-            La información será enviada por correo electrónico y <b>no se almacena en ninguna base de datos</b>.<br>
-            <b>No incluyas datos personales sensibles.</b><br>
-            <b>Advertencia:</b> El envío no está cifrado de extremo a extremo, aunque la conexión es segura por HTTPS.
-          </small>
-        </div>
-
-        <div id="formErrors" class="form-errors" style="display:none"></div>
-        <button type="submit" class="btn-enviar">Enviar mensaje</button>
-      </form>
-    </section>
-
-    <section class="card info-card">
+  <!-- ========== MODAL (aparece al cargar) ========== -->
+  <div id="infoModal" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Cerrar información">&times;</button>
       <h2>Información de seguridad</h2>
       <ul>
         <li>Validación estricta en todos los campos antes de enviar.</li>
         <li>Protección contra spam/bots mediante captcha visual y checkbox "no soy un robot".</li>
         <li>No se solicitan datos personales sensibles.</li>
         <li>Solo se envía la información necesaria, a través de HTTPS.</li>
-        <li>La respuesta es procesada por el servicio seguro <a href="https://formsubmit.co/" rel="noopener" target="_blank">FormSubmit</a>.</li>
+        <li>La respuesta es procesada por el servicio seguro <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>.</li>
       </ul>
-    </section>
+    </div>
+  </div>
+
+  <!-- ========== MAIN ========== -->
+  <main>
+    <div class="content-wrapper">
+      <!-- Formulario de contacto -->
+      <section class="card contact-card">
+        <h1>Contacto</h1>
+        <p>¿Tienes alguna pregunta, sugerencia o comentario? Rellena el siguiente formulario:</p>
+
+        <form id="contactForm" method="POST" action="https://formsubmit.co/ccobian8@ucol.mx" autocomplete="off" novalidate>
+          <div class="form-group">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" required minlength="2" maxlength="60"
+                   pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s\.\-']+$">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico *</label>
+            <input type="email" id="email" name="email" required maxlength="100"
+                   pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje *</label>
+            <textarea id="mensaje" name="mensaje" required minlength="10" maxlength="500"></textarea>
+          </div>
+
+          <!-- Captcha de imágenes -->
+          <div class="captcha-section">
+            <div class="captcha-label-row">
+              <label id="captchaImgLabel">Selecciona la hoja verde para continuar: *</label>
+              <button type="button" id="daltonicoCaptcha" class="btn-daltonico"
+                      aria-pressed="false">Modo daltonismo</button>
+            </div>
+
+            <div id="captchaImages" class="captcha-images">
+              <img src="../assets/captcha1.png" data-correct="false" alt="Hoja seca">
+              <img src="../assets/captcha2.png" data-correct="true"  alt="Hoja verde">
+              <img src="../assets/captcha3.png" data-correct="false" alt="Piedras">
+            </div>
+
+            <input type="hidden" id="captchaImg" name="captchaImg">
+          </div>
+
+          <!-- Checkbox no soy robot -->
+          <div class="robot-checkbox">
+            <input type="checkbox" id="notRobot" name="notRobot" required>
+            <label for="notRobot"><span class="robot-icon">&#129302;</span> No soy un robot</label>
+          </div>
+
+          <!-- Campos ocultos formsubmit -->
+          <input type="hidden" name="_next" value="https://jared17-17.github.io/ods-clima/pages/contacto.html?success">
+          <input type="hidden" name="_captcha" value="false">
+
+          <div class="form-privacidad">
+            <small>
+              La información será enviada por correo electrónico y <b>no se almacena en ninguna base de datos</b>.<br>
+              <b>No incluyas datos personales sensibles.</b><br>
+              <b>Advertencia:</b> El envío no está cifrado de extremo a extremo (la conexión sí es HTTPS).
+            </small>
+          </div>
+
+          <div id="formErrors" class="form-errors" hidden></div>
+          <button type="submit" class="btn-enviar">Enviar mensaje</button>
+        </form>
+      </section>
+
+      <!-- Tarjeta estática de seguridad -->
+      <section class="card info-card static-info">
+        <h2>Información de seguridad</h2>
+        <ul>
+          <li>Validación estricta en todos los campos antes de enviar.</li>
+          <li>Protección contra spam/bots mediante captcha visual y checkbox "no soy un robot".</li>
+          <li>No se solicitan datos personales sensibles.</li>
+          <li>Solo se envía la información necesaria, a través de HTTPS.</li>
+          <li>La respuesta es procesada por el servicio seguro <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>.</li>
+        </ul>
+      </section>
+    </div>
   </main>
 
+  <!-- ========== FOOTER ========== -->
   <footer>
-    <p>&copy; 2024 Tu Nombre | ODS Acción por el Clima</p>
+    <p>&copy; 2024 Tu Nombre | ODS 13 Acción por el Clima</p>
   </footer>
 
-  <!-- Animación de entrada -->
+  <!-- ========== SCRIPTS ========== -->
   <script src="../js/animacion-vista.js"></script>
-  <!-- Ajustes -->
-  <script>
-    fetch('../ajustes.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('ajustes-inject').outerHTML = html;
-        const script = document.createElement('script');
-        script.src = '../js/accesibilidad.js';
-        document.body.appendChild(script);
-      });
-  </script>
+  <script src="../js/device-detect.js"></script>
+  <script src="../js/performance-enhance.js" defer></script>
+  <script src="../js/contacto-modal.js" defer></script>
   <script src="../js/captcha-img.js" defer></script>
   <script src="../js/captcha-check.js" defer></script>
   <script src="../js/contacto.js" defer></script>
   <script src="../seguridad/seguridad.js" defer></script>
-  <!-- en las páginas dentro de /pages/ -->
-  <script src="../js/device-detect.js"></script>
-  <script src="../js/performance-enhance.js" defer></script>
+
+  <!-- Inyección del botón de ajustes -->
+  <script>
+    fetch('../ajustes.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('ajustes-inject').outerHTML = html;
+        const s = document.createElement('script');
+        s.src = '../js/accesibilidad.js';
+        document.body.appendChild(s);
+      });
+  </script>
 </body>
 </html>
