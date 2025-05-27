@@ -5,6 +5,9 @@
   <title>CV | ODS Acción por el Clima</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../css/cv.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/accesibilidad.css">
+  <link rel="icon" href="data:,">
   <link rel="icon" href="../favicon.png" type="image/png">
 </head>
 <body>
@@ -17,69 +20,94 @@
         <li><a href="cv.html" aria-current="page">CV</a></li>
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
+      <div id="ajustes-inject"></div>
     </nav>
   </header>
+
   <main>
-    <div class="cv-header">
-      <img src="../assets/avatar.png" alt="Fotografía de perfil" class="cv-avatar" />
-      <div class="cv-header-info">
-        <h1>Nombre Apellido</h1>
-        <p><strong>Carrera:</strong> Ing. en Sistemas Computacionales</p>
-        <p><strong>Email:</strong> tu.email@ejemplo.com</p>
-        <p><strong>Ubicación:</strong> Ciudad, País</p>
-      </div>
-    </div>
-
-    <section class="cv-section">
-      <h2>Perfil Profesional</h2>
-      <p>
-        Apasionado por la tecnología, el desarrollo web y la protección del medio ambiente. Busco aplicar mis conocimientos en proyectos innovadores relacionados con los Objetivos de Desarrollo Sostenible.
-      </p>
-    </section>
-
-    <section class="cv-section">
-      <h2>Formación Académica</h2>
-      <div class="cv-cards">
-        <div class="cv-card">
-          <h3>Licenciatura en Sistemas Computacionales</h3>
-          <p>Universidad XYZ | 2021 - Actualidad</p>
-        </div>
-        <div class="cv-card">
-          <h3>Bachillerato Tecnológico</h3>
-          <p>CBTis 123 | 2018 - 2021</p>
+    <section class="card cv-card">
+      <div class="cv-header">
+        <img src="../assets/avatar.png" alt="Fotografía de perfil" class="cv-avatar" />
+        <div class="cv-header-info">
+          <h1>Nombre Apellido</h1>
+          <p><strong>Carrera:</strong> Ing. en Sistemas Computacionales</p>
+          <p><strong>Email:</strong> tu.email@ejemplo.com</p>
+          <p><strong>Ubicación:</strong> Ciudad, País</p>
         </div>
       </div>
-    </section>
 
-    <section class="cv-section">
-      <h2>Experiencia</h2>
-      <div class="cv-cards">
-        <div class="cv-card">
-          <h3>Desarrollador Web Junior</h3>
-          <p>Proyecto ODS 13 | 2024</p>
-          <ul>
-            <li>Diseño y desarrollo de sitio web educativo sobre acción por el clima.</li>
-            <li>Implementación de funciones de accesibilidad y buenas prácticas de seguridad.</li>
-          </ul>
+      <div class="cv-section">
+        <h2>Perfil Profesional</h2>
+        <p>
+          Apasionado por la tecnología, el desarrollo web y la protección del medio ambiente. Busco aplicar mis conocimientos en proyectos innovadores relacionados con los Objetivos de Desarrollo Sostenible.
+        </p>
+      </div>
+
+      <div class="cv-section">
+        <h2>Formación Académica</h2>
+        <div class="cv-cards">
+          <div class="cv-card-item">
+            <h3>Licenciatura en Sistemas Computacionales</h3>
+            <p>Universidad XYZ | 2021 - Actualidad</p>
+          </div>
+          <div class="cv-card-item">
+            <h3>Bachillerato Tecnológico</h3>
+            <p>CBTis 123 | 2018 - 2021</p>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section class="cv-section">
-      <h2>Habilidades</h2>
-      <ul class="cv-skills">
-        <li>HTML5 y CSS3</li>
-        <li>JavaScript</li>
-        <li>Control de versiones (Git)</li>
-        <li>Desarrollo responsivo</li>
-        <li>Accesibilidad web</li>
-        <li>Trabajo en equipo</li>
+      <div class="cv-section">
+        <h2>Experiencia</h2>
+        <div class="cv-cards">
+          <div class="cv-card-item">
+            <h3>Desarrollador Web Junior</h3>
+            <p>Proyecto ODS 13 | 2024</p>
+            <ul>
+              <li>Diseño y desarrollo de sitio web educativo sobre acción por el clima.</li>
+              <li>Implementación de funciones de accesibilidad y buenas prácticas de seguridad.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-section">
+        <h2>Habilidades</h2>
+        <ul class="cv-skills">
+          <li>HTML5 y CSS3</li>
+          <li>JavaScript</li>
+          <li>Control de versiones (Git)</li>
+          <li>Desarrollo responsivo</li>
+          <li>Accesibilidad web</li>
+          <li>Trabajo en equipo</li>
+        </ul>
+      </div>
+    </section>
+    <section class="card info-card">
+      <h2>Información de seguridad</h2>
+      <ul>
+        <li>No se muestran datos personales sensibles.</li>
+        <li>La página emplea buenas prácticas de accesibilidad y seguridad.</li>
+        <li>El código es mantenible y cumple con los estándares de la web.</li>
       </ul>
     </section>
   </main>
+
   <footer>
     <p>&copy; 2024 Tu Nombre | ODS Acción por el Clima</p>
   </footer>
-  <script src="../js/cv.js"></script>
+
+  <script>
+    fetch('../ajustes.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('ajustes-inject').outerHTML = html;
+        const script = document.createElement('script');
+        script.src = '../js/accesibilidad.js';
+        document.body.appendChild(script);
+      });
+  </script>
+  <script src="../js/cv.js" defer></script>
+  <script src="../seguridad/seguridad.js" defer></script>
 </body>
 </html>
