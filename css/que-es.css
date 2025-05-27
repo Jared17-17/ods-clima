@@ -1,0 +1,111 @@
+/*  Variables (heredan las que ya definiste en styles.css)  */
+:root{
+  --main-bg:#f8f9fa;
+  --card-bg:#ffffff;
+  --header-bg:#017187;
+  --accent:#229977;
+
+  --btn-bg:#017187;
+  --btn-bg-hover:#229977;
+  --btn-text:#ffffff;
+}
+
+/* Dark mode: mismo patrón que en otras vistas */
+body.dark-mode,
+body.modo-oscuro{
+  --main-bg:#121212;
+  --card-bg:#1f1f1f;
+  --header-bg:#02819a;
+  --accent:#35c287;
+
+  --btn-bg:#02819a;
+  --btn-bg-hover:#2ea8c1;
+  --btn-text:#ffffff;
+}
+
+/*  Básicos  */
+body{background:var(--main-bg)}
+.card{
+  background:var(--card-bg);
+  border-radius:1.25em;
+  box-shadow:0 4px 28px rgba(1,113,135,.08);
+  padding:2.4em 2.1em;
+  margin:2.4em auto;
+  max-width:980px;
+}
+@media(max-width:700px){.card{padding:1.2em}}
+h1{font-size:2.3em;margin:0 0 .5em 0;color:var(--accent)}
+h2{font-size:1.7em;margin:0 0 .6em 0;color:var(--header-bg)}
+
+/*  HERO  */
+.hero p{font-size:1.18em;line-height:1.55}
+
+/*  Cifras  */
+.cifras{display:flex;flex-wrap:wrap;gap:2em;align-items:center}
+.cifras .texto{flex:1 1 340px}
+.cifras ul{padding-left:1.2em;line-height:1.6}
+.img-ph{
+  flex:1 1 260px;
+  min-height:200px;
+  border:3px dashed #9ac2cc;
+  border-radius:1em;
+  background:#e2f1f4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#4e7b85;
+  font-size:.95em;
+}
+
+/*  Causas  */
+.causas-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.6em;
+}
+.causa{
+  background:var(--main-bg);
+  border-left:6px solid var(--accent);
+  border-radius:1em;
+  padding:1.4em 1.6em;
+  box-shadow:0 4px 18px rgba(1,113,135,.05);
+}
+.causa h3{margin:.1em 0 .5em 0;font-size:1.25em;color:var(--header-bg)}
+
+/*  Impactos  */
+.impacto-flex{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.6em;
+}
+.impacto{
+  flex:1 1 260px;
+  background:var(--main-bg);
+  border-left:6px solid var(--accent);
+  border-radius:1em;
+  padding:1.3em 1.5em;
+  box-shadow:0 4px 18px rgba(1,113,135,.05);
+}
+.impacto h3{margin:.1em 0 .45em 0;color:var(--header-bg);font-size:1.25em}
+
+/*  Botón final  */
+.call-action{text-align:center}
+.btn-ir{
+  display:inline-block;
+  margin-top:1.2em;
+  background:var(--btn-bg);
+  color:var(--btn-text);
+  padding:.9em 2.2em;
+  border-radius:.85em;
+  font-size:1.12em;
+  font-weight:700;
+  text-decoration:none;
+  transition:background .18s,transform .18s;
+}
+.btn-ir:hover{background:var(--btn-bg-hover);transform:translateY(-2px)}
+
+/*  Responsive ajustes */
+@media(max-width:700px){
+  h1{font-size:1.9em}
+  .img-ph{min-height:160px;font-size:.85em}
+}

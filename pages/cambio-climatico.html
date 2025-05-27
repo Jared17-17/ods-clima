@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Qué es el ODS 13? | Acción por el Clima</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- estilos globales + específicos -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/que-es.css">
+  <link rel="stylesheet" href="../css/accesibilidad.css">
+
+  <link rel="icon" href="../favicon.png" type="image/png">
+</head>
+<body>
+  <!-- ========== NAV ========== -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="cambio-climatico.html" aria-current="page">¿Qué es?</a></li>
+        <li><a href="acciones.html">Acciones</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div id="ajustes-inject"></div>
+    </nav>
+  </header>
+
+  <!-- ========== MAIN ========== -->
+  <main>
+    <!-- HERO -->
+    <section class="card hero">
+      <h1>ODS 13: Acción por el Clima</h1>
+      <p>
+        El Objetivo de Desarrollo Sostenible 13 nos llama a tomar <b>medidas urgentes</b>
+        para combatir el cambio climático y sus impactos.<br>
+        Conoce su contexto, cifras clave y qué podemos hacer para lograr un planeta resiliente.
+      </p>
+    </section>
+
+    <!-- Cambio climático en cifras -->
+    <section class="card cifras">
+      <div class="texto">
+        <h2>El cambio climático en cifras</h2>
+        <ul>
+          <li>La temperatura media global ya ha aumentado <b>1,1 °C</b> respecto a la era preindustrial.</li>
+          <li>La <b>década 2011-2020</b> fue la más cálida jamás registrada.</li>
+          <li>Más del <b>70 %</b> de los desastres naturales están relacionados con eventos climáticos extremos.</li>
+          <li>Los océanos absorben cerca del <b>90 %</b> del exceso de calor, provocando su acidificación.</li>
+        </ul>
+      </div>
+      <!-- espacio para imagen / gráfico -->
+      <div class="img-ph" aria-label="Espacio para gráfica o imagen de líneas de temperatura"></div>
+    </section>
+
+    <!-- Causas principales -->
+    <section class="card causas">
+      <h2>Causas principales de las emisiones</h2>
+      <div class="causas-grid">
+        <article class="causa">
+          <h3>Energía</h3>
+          <p>La quema de combustibles fósiles para electricidad y calor representa la mayor parte de las emisiones.</p>
+        </article>
+        <article class="causa">
+          <h3>Transporte</h3>
+          <p>Vehículos terrestres, aéreos y marítimos basados en combustibles fósiles liberan millones de toneladas de CO₂.</p>
+        </article>
+        <article class="causa">
+          <h3>Agricultura y ganadería</h3>
+          <p>La ganadería intensiva emite metano; la deforestación para pastos reduce sumideros de carbono.</p>
+        </article>
+        <article class="causa">
+          <h3>Industria</h3>
+          <p>Procesos industriales (cemento, acero, químicos) consumen grandes cantidades de energía y generan gases de efecto invernadero.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Impactos -->
+    <section class="card impactos">
+      <h2>Impactos del cambio climático</h2>
+      <div class="impacto-flex">
+        <div class="impacto">
+          <h3>Eventos extremos</h3>
+          <p>Sequías, incendios forestales, huracanes y lluvias torrenciales son más frecuentes e intensos.</p>
+        </div>
+        <div class="impacto">
+          <h3>Pérdida de biodiversidad</h3>
+          <p>Muchas especies no logran adaptarse a los cambios rápidos de temperatura y hábitat.</p>
+        </div>
+        <div class="impacto">
+          <h3>Amenaza a la salud</h3>
+          <p>Aumento de enfermedades transmitidas por vectores y golpes de calor, especialmente en poblaciones vulnerables.</p>
+        </div>
+      </div>
+      <div class="img-ph" aria-label="Espacio para imagen de impactos climáticos"></div>
+    </section>
+
+    <!-- Qué podemos hacer -->
+    <section class="card call-action">
+      <h2>¿Qué podemos hacer?</h2>
+      <p>
+        Desde decisiones individuales, como mejorar la eficiencia energética en casa,
+        hasta acciones colectivas, como exigir políticas de energía limpia,
+        cada esfuerzo cuenta para mitigar el calentamiento global.
+      </p>
+      <a href="acciones.html" class="btn-ir">Descubre acciones concretas</a>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <p>&copy; 2024 Tu Nombre | ODS 13 Acción por el Clima</p>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="../js/device-detect.js"></script>
+  <script src="../js/performance-enhance.js" defer></script>
+  <script src="../js/animacion-vista.js"></script>
+  <script src="../seguridad/seguridad.js" defer></script>
+
+  <!-- botón de ajustes -->
+  <script>
+    fetch('../ajustes.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('ajustes-inject').outerHTML = html;
+        const s = document.createElement('script');
+        s.src = '../js/accesibilidad.js';
+        document.body.appendChild(s);
+      });
+  </script>
+</body>
+</html>
