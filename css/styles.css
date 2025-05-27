@@ -271,3 +271,15 @@ body.alto-contraste {
   --input-text: #ff0;
   --input-border: #ff0;
 }
+
+
+
+
+
+/*  Regla global: en móviles reduce paddings y espacios si quieres.  */
+.device-mobile .card          { padding: 1.4em 1.2em; }
+.device-mobile header nav ul  { gap: 1em; }
+.device-mobile h1             { font-size: 1.6em; }
+.device-mobile h2             { font-size: 1.25em; }
+
+/*  Estilos por defecto siguen igual en escritorio gracias a .device-desktop  */
