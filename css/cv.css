@@ -1,105 +1,158 @@
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f4f7fa;
-    color: #222;
-    margin: 0;
-    padding: 0;
+  background: #f4f7fa;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  margin: 0;
+  padding: 0;
 }
+
 header nav {
-    background: #257a3e;
-    padding: 1rem;
+  background: #257a3e;
+  padding: 1.1em 0;
 }
+
 header nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.6em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
 header nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    padding: .5rem 1rem;
-    border-radius: .5rem;
-    transition: background 0.3s;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5em 1.2em;
+  border-radius: 0.6em;
+  transition: background 0.2s;
 }
+
 header nav a[aria-current="page"], header nav a:hover {
-    background: #174d28;
+  background: #174d28;
 }
 
 main {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: #fff;
-    border-radius: 1.5rem;
-    box-shadow: 0 4px 24px rgba(37, 122, 62, 0.07);
+  max-width: 860px;
+  margin: 2.2em auto;
+  padding: 2em 1.5em;
+  background: #fff;
+  border-radius: 1.5em;
+  box-shadow: 0 4px 28px rgba(37, 122, 62, 0.08);
 }
-.cv-intro {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
+
+.cv-header {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin-bottom: 2em;
 }
+
 .cv-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #257a3e;
-    background: #e7f5ea;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #257a3e;
+  background: #e7f5ea;
+  box-shadow: 0 2px 12px #257a3e22;
 }
+
+.cv-header-info h1 {
+  margin: 0 0 0.4em 0;
+  font-size: 2em;
+  color: #257a3e;
+}
+.cv-header-info p {
+  margin: 0.2em 0;
+}
+
 .cv-section {
-    margin-bottom: 2.5rem;
+  margin-bottom: 2em;
 }
+
+.cv-section h2 {
+  color: #257a3e;
+  font-size: 1.5em;
+  margin-bottom: 0.7em;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding-left: 0.6em;
+}
+.cv-section h2::before {
+  content: '';
+  display: inline-block;
+  width: 0.4em;
+  height: 1.1em;
+  background: #b3ddc9;
+  border-radius: 0.3em;
+  margin-right: 0.4em;
+  position: absolute;
+  left: 0;
+  top: 0.08em;
+}
+
 .cv-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2em;
 }
 .cv-card {
-    background: #e7f5ea;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    flex: 1 1 250px;
-    box-shadow: 0 2px 8px rgba(37,122,62,0.09);
-    min-width: 220px;
+  background: #e7f5ea;
+  border-radius: 1em;
+  padding: 1.2em 1.5em;
+  flex: 1 1 260px;
+  min-width: 210px;
+  box-shadow: 0 2px 12px #257a3e11;
+  margin-bottom: 1em;
+  transition: transform 0.2s;
 }
+.cv-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 22px #257a3e33;
+}
+
 .cv-skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .8rem 1.2rem;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7em 1.2em;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 .cv-skills li {
-    background: #257a3e;
-    color: #fff;
-    border-radius: .8rem;
-    padding: .6rem 1.1rem;
-    font-size: 1rem;
+  background: #257a3e;
+  color: #fff;
+  border-radius: 0.9em;
+  padding: 0.6em 1.1em;
+  font-size: 1em;
+  transition: background 0.15s;
 }
+.cv-skills li:hover {
+  background: #174d28;
+}
+
 footer {
-    text-align: center;
-    padding: 1.5rem 0 .8rem 0;
-    background: #257a3e;
-    color: #fff;
-    margin-top: 2rem;
-    border-radius: 0 0 1.5rem 1.5rem;
+  text-align: center;
+  padding: 1.5em 0 0.9em 0;
+  background: #257a3e;
+  color: #fff;
+  margin-top: 2em;
+  border-radius: 0 0 1.5em 1.5em;
 }
+
 @media (max-width: 700px) {
-    .cv-intro {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-    .cv-cards {
-        flex-direction: column;
-    }
-    main {
-        padding: 1rem;
-    }
+  .cv-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+  }
+  .cv-cards {
+    flex-direction: column;
+    gap: 1em;
+  }
+  main {
+    padding: 1em;
+  }
 }
