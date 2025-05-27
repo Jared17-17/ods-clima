@@ -5,17 +5,17 @@
   <title>ODS Acción por el Clima | Inicio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Estilos globales -->
+  <!-- estilos globales -->
   <link rel="stylesheet" href="css/styles.css">
-  <!-- Estilos específicos de la portada -->
+  <!-- estilos propios de la portada -->
   <link rel="stylesheet" href="css/inicio.css">
-  <!-- Accesibilidad – se reutiliza en todas las vistas -->
+  <!-- accesibilidad común -->
   <link rel="stylesheet" href="css/accesibilidad.css">
 
   <link rel="icon" href="favicon.png" type="image/png">
 </head>
 <body>
-  <!-- ===== HEADER / NAV ===== -->
+  <!-- ========== NAV ========== -->
   <header>
     <nav>
       <ul>
@@ -29,14 +29,14 @@
     </nav>
   </header>
 
-  <!-- ===== MAIN CONTENT ===== -->
+  <!-- ========== MAIN ========== -->
   <main>
-    <!-- Hero / Bienvenida -->
+    <!-- HERO -->
     <section class="card hero">
       <div class="hero-texto">
         <h1>Bienvenido a&nbsp;<span>ODS 13</span></h1>
         <p>
-          Este sitio está dedicado a difundir conocimiento y acciones sobre el <b>cambio climático</b>.  
+          Este sitio está dedicado a difundir conocimiento y acciones sobre el <b>cambio climático</b>.
           Explora, aprende y actúa: juntos podemos marcar la diferencia para nuestro planeta.
         </p>
         <div class="hero-cta">
@@ -44,7 +44,6 @@
           <a class="btn-outline"  href="pages/acciones.html">Empieza a actuar hoy</a>
         </div>
       </div>
-      <!-- Imagen ilustrativa (puedes cambiarla después) -->
       <div class="hero-imagen">
         <img src="assets/clima.jpg" alt="Ilustración sobre el cambio climático">
       </div>
@@ -78,19 +77,18 @@
     </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ========== FOOTER ========== -->
   <footer>
     <p>&copy; 2024 Tu Nombre | ODS 13 Acción por el Clima</p>
   </footer>
 
-  <!-- ===== SCRIPTS ===== -->
-  <!-- animación de entrada que compartes con las demás vistas -->
+  <!-- ========== SCRIPTS ========== -->
+  <script src="js/device-detect.js"></script>
+  <script src="js/performance-enhance.js" defer></script>
   <script src="js/animacion-vista.js"></script>
   <script src="seguridad/seguridad.js" defer></script>
-  <script src="../js/device-detect.js"></script>   <!--  o  "js/device-detect.js" en index  -->
-  <script src="js/performance-enhance.js" defer></script>
 
-  <!-- inyección de botón de ajustes + script de accesibilidad -->
+  <!-- botón de ajustes -->
   <script>
     fetch('ajustes.html')
       .then(r => r.text())
