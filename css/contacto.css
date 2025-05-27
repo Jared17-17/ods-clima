@@ -169,3 +169,75 @@ form textarea {
     padding: .7em .5em;
   }
 }
+
+
+
+:root {
+  --main-bg: #f8f9fa;
+  --card-bg: #fff;
+  --header-bg: #017187;
+  --nav-link: #fff;
+  --nav-link-hover: #b3d8e0;
+  --accent: #229977;
+  --input-border: #d6dee2;
+  --input-bg: #f4f7fa;
+  --input-text: #1a1c1c;
+  --button-bg: #017187;
+  --button-text: #fff;
+  --button-bg-hover: #229977;
+}
+
+body {
+  background: var(--main-bg);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+header nav {
+  background: var(--header-bg);
+  padding: 1.1em 0;
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.6em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav a {
+  color: var(--nav-link);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5em 1.2em;
+  border-radius: 0.6em;
+  transition: background 0.2s, color 0.2s;
+}
+
+header nav a[aria-current="page"], header nav a:hover {
+  background: var(--nav-link-hover);
+  color: #105864;
+}
+
+.card,
+.info-card,
+.contact-card {
+  background: var(--card-bg);
+  border-radius: 1.25em;
+  box-shadow: 0 4px 28px rgba(1,113,135,0.08);
+  padding: 2.2em 2em;
+  margin: 2.2em auto;
+  max-width: 740px;
+}
+
+@media (max-width: 700px) {
+  .card,
+  .info-card,
+  .contact-card {
+    padding: 1em;
+  }
+}
