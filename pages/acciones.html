@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Acciones | ODS Acción por el Clima</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- estilos globales y propios -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/acciones.css">
+  <link rel="stylesheet" href="../css/accesibilidad.css">
+
+  <link rel="icon" href="../favicon.png" type="image/png">
+</head>
+<body>
+  <!-- NAV idéntico a las demás vistas -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="cambio-climatico.html">¿Qué es?</a></li>
+        <li><a href="acciones.html" aria-current="page">Acciones</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div id="ajustes-inject"></div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO / introducción -->
+    <section class="card hero">
+      <div class="hero-txt">
+        <h1>Acciones diarias para un futuro sostenible</h1>
+        <p>
+          Aquí encontrarás sugerencias sencillas y prácticas para reducir tu huella de carbono
+          <b>en casa, en el transporte, en tu alimentación y en la comunidad</b>.
+          Filtra por categoría y ¡pon manos a la obra!
+        </p>
+      </div>
+    </section>
+
+    <!-- Botones de filtro -->
+    <section class="filtros card">
+      <button class="btn-filtro activo" data-filtro="todos">Todas</button>
+      <button class="btn-filtro" data-filtro="hogar">Hogar</button>
+      <button class="btn-filtro" data-filtro="transporte">Transporte</button>
+      <button class="btn-filtro" data-filtro="alimentacion">Alimentación</button>
+      <button class="btn-filtro" data-filtro="comunidad">Comunidad</button>
+    </section>
+
+    <!-- GRID de acciones -->
+    <section class="grid-acciones">
+      <!-- Hogar -->
+      <article class="accion-card" data-cat="hogar">
+        <h2>Apaga y desconecta</h2>
+        <p>Desconecta cargadores y apaga luces que no uses. Reduce consumo fantasma.</p>
+      </article>
+
+      <article class="accion-card" data-cat="hogar">
+        <h2>Cambia a LED</h2>
+        <p>Sustituye focos incandescentes por LED: ahorras hasta 80&nbsp;% de energía.</p>
+      </article>
+
+      <!-- Transporte -->
+      <article class="accion-card" data-cat="transporte">
+        <h2>Comparte tu auto</h2>
+        <p>Practica el <i>car-pooling</i> con compañeros o amigos para reducir emisiones.</p>
+      </article>
+
+      <article class="accion-card" data-cat="transporte">
+        <h2>Usa la bici</h2>
+        <p>Para trayectos cortos elige bicicleta o caminar: cero emisiones, más salud.</p>
+      </article>
+
+      <!-- Alimentación -->
+      <article class="accion-card" data-cat="alimentacion">
+        <h2>Menos carne roja</h2>
+        <p>Reduce el consumo semanal de carne; la ganadería es gran emisora de metano.</p>
+      </article>
+
+      <article class="accion-card" data-cat="alimentacion">
+        <h2>Compra local</h2>
+        <p>Elige productos de temporada y cercanos para disminuir transporte y empaque.</p>
+      </article>
+
+      <!-- Comunidad -->
+      <article class="accion-card" data-cat="comunidad">
+        <h2>Planta un árbol</h2>
+        <p>Organiza o participa en reforestaciones urbanas y rurales de tu zona.</p>
+      </article>
+
+      <article class="accion-card" data-cat="comunidad">
+        <h2>Difunde buenas prácticas</h2>
+        <p>Comparte consejos climáticos en redes y motiva a otros a sumarse.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Tu Nombre | ODS 13 Acción por el Clima</p>
+  </footer>
+
+  <!-- Animación de entrada + lógica de filtros + ajustes + seguridad -->
+  <script src="../js/animacion-vista.js"></script>
+  <script src="../js/acciones.js"></script>
+  <script src="../seguridad/seguridad.js" defer></script>
+  <script>
+    fetch('../ajustes.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('ajustes-inject').outerHTML = html;
+        const s = document.createElement('script');
+        s.src = '../js/accesibilidad.js';
+        document.body.appendChild(s);
+      });
+  </script>
+</body>
+</html>
