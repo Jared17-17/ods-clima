@@ -1,113 +1,90 @@
-/* ─── variables (modo claro) ─── */
+/* ── Variables modo claro ── */
 :root{
-  --main-bg:#f8f9fa;
-  --card-bg:#ffffff;
-  --header-bg:#017187;
-  --accent:#229977;
-  --btn-bg:#017187;
-  --btn-bg-hover:#229977;
-  --btn-text:#ffffff;
+  --bg:#f8f9fa; --card:#fff; --head:#017187; --accent:#229977;
+  --txt:#222;   --btn:#017187; --btn-hov:#229977;
 }
 
-/* ─── modo oscuro ─── */
+/* ── Modo oscuro ── */
 body.modo-oscuro{
-  --main-bg:#121212;
-  --card-bg:#1f1f1f;
-  --header-bg:#02819a;
-  --accent:#35c287;
-  --btn-bg:#02819a;
-  --btn-bg-hover:#2ea8c1;
-  --btn-text:#ffffff;
+  --bg:#121212; --card:#1f1f1f; --head:#02819a; --accent:#35c287;
+  --txt:#e0e0e0; --btn:#02819a; --btn-hov:#2ea8c1;
 }
 
-/* ─── alto contraste ─── */
+/* ── Alto contraste ── */
 body.alto-contraste{
-  --main-bg:#000;
-  --card-bg:#000;
-  --header-bg:#fff;
-  --accent:#ff0;
-  --btn-bg:#222;
-  --btn-bg-hover:#555;
-  --btn-text:#ff0;
+  --bg:#000; --card:#000; --txt:#ff0; --btn:#333; --btn-hov:#777;
 }
 
-/* ─── daltonismo ─── */
+/* ── Daltonismo ── */
 body.daltonico{
-  --main-bg:#e3f6fd;
-  --card-bg:#f1faee;
-  --header-bg:#003049;
-  --accent:#ffb703;
-  --btn-bg:#ffb703;
-  --btn-bg-hover:#f77f00;
-  --btn-text:#003049;
+  --bg:#e3f6fd; --card:#f1faee; --txt:#003049;
+  --btn:#ffb703; --btn-hov:#f77f00; --accent:#ffb703; --head:#003049;
 }
 
-/* ─── básicos ─── */
-body{background:var(--main-bg);color:inherit}
+/* ========== Básicos ========== */
+body{background:var(--bg);color:var(--txt)}
+
+/* nav flex para alojar el botón ajustes */
+header nav{
+  display:flex;align-items:center;justify-content:center;
+  background:var(--head);padding:1.1em 0;
+}
+header nav ul{display:flex;gap:1.6em;list-style:none;margin:0;padding:0}
+#ajustes-wrapper{margin-left:auto}        /* botón a la derecha */
+header nav a{
+  color:#fff;font-weight:600;padding:.55em 1.25em;border-radius:.6em;text-decoration:none;transition:.2s;
+}
+header nav a:hover,header nav a[aria-current]{background:#b3d8e0;color:#105864}
+
+/* tarjetas */
 .card{
-  background:var(--card-bg);
-  border-radius:1.25em;
+  background:var(--card);border-radius:1.25em;
   box-shadow:0 4px 28px rgba(1,113,135,.08);
-  padding:2.4em 2.1em;
-  margin:2.4em auto;
-  max-width:980px;
+  padding:2.4em 2.1em;margin:2.4em auto;max-width:980px;
 }
 @media(max-width:700px){.card{padding:1.2em}}
 h1{font-size:2.3em;margin:0 0 .5em;color:var(--accent)}
-h2{font-size:1.7em;margin:0 0 .6em;color:var(--header-bg)}
+h2{font-size:1.7em;margin:0 0 .6em;color:var(--head)}
 
-/* ─── hero ─── */
+/* hero */
 .hero p{font-size:1.18em;line-height:1.55}
 
-/* ─── cifras ─── */
+/* cifras */
 .cifras{display:flex;flex-wrap:wrap;gap:2em;align-items:center}
 .cifras .texto{flex:1 1 340px}
 .cifras ul{padding-left:1.2em;line-height:1.6}
-.img-ph{flex:1 1 260px;min-height:200px;border-radius:1em;padding:0}
+.img-ph{flex:1 1 260px;min-height:200px;padding:0}
 
-/* ─── causas ─── */
+/* causas */
 .causas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.6em}
 .causa{
-  background:var(--main-bg);
-  border-left:6px solid var(--accent);
-  border-radius:1em;
-  padding:1.4em 1.6em;
-  box-shadow:0 4px 18px rgba(1,113,135,.05);
+  background:var(--bg);border-left:6px solid var(--accent);border-radius:1em;
+  padding:1.4em 1.6em;box-shadow:0 4px 18px rgba(1,113,135,.05);
 }
-.causa h3{margin:.1em 0 .5em;font-size:1.25em;color:var(--header-bg)}
+.causa h3{margin:.1em 0 .5em;font-size:1.25em;color:var(--head)}
 
-/* ─── impactos ─── */
+/* impactos */
 .impacto-flex{display:flex;flex-wrap:wrap;gap:1.6em}
 .impacto{
-  flex:1 1 260px;
-  background:var(--main-bg);
-  border-left:6px solid var(--accent);
-  border-radius:1em;
-  padding:1.3em 1.5em;
-  box-shadow:0 4px 18px rgba(1,113,135,.05);
+  flex:1 1 260px;background:var(--bg);border-left:6px solid var(--accent);
+  border-radius:1em;padding:1.3em 1.5em;box-shadow:0 4px 18px rgba(1,113,135,.05);
 }
-.impacto h3{margin:.1em 0 .45em;color:var(--header-bg);font-size:1.25em}
+.impacto h3{margin:.1em 0 .45em;color:var(--head);font-size:1.25em}
 
-/* ─── botón final ─── */
+/* botón CTA */
 .call-action{text-align:center}
 .btn-ir{
-  display:inline-block;margin-top:1.2em;
-  background:var(--btn-bg);color:var(--btn-text);
+  display:inline-block;margin-top:1.2em;background:var(--btn);color:#fff;
   padding:.9em 2.2em;border-radius:.85em;font-size:1.12em;font-weight:700;
-  text-decoration:none;transition:background .18s,transform .18s;
+  text-decoration:none;transition:.18s;
 }
-.btn-ir:hover{background:var(--btn-bg-hover);transform:translateY(-2px)}
+.btn-ir:hover{background:var(--btn-hov);transform:translateY(-2px)}
 
-/* ─── responsive ─── */
+/* imágenes: sin filtros que cambien la foto */
+.themed-img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block}
+
+/* responsive */
 @media(max-width:700px){
   h1{font-size:1.9em}
   .img-ph{min-height:160px}
 }
-
-/* ─── imágenes adaptativas ─── */
-.themed-img{
-  width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;
-}
-body.modo-oscuro   .themed-img{filter:brightness(.85)}
-body.alto-contraste.themed-img{filter:grayscale(1) contrast(1.5)}
-body.daltonico     .themed-img{filter:contrast(1.2) saturate(1.4)}
