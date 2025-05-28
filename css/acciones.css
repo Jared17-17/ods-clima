@@ -1,32 +1,155 @@
-/* ============= botón y menú ============= */
-#ajustes-wrapper{position:relative;display:inline-block}
-#ajustesBtn{
-  background:#222;color:#fff;border:none;border-radius:.6em;
-  padding:.45em 1.2em;font-weight:700;font-size:1.05em;cursor:pointer;
-  box-shadow:0 2px 8px #0004;transition:background .2s;
-}
-#ajustesBtn:hover,#ajustesBtn:focus{background:#005f73}
+/********  variables (modo claro)  ********/
+:root{
+  --main-bg:#f8f9fa;
+  --card-bg:#ffffff;
+  --header-bg:#017187;
+  --nav-link:#ffffff;
+  --nav-link-hover:#b3d8e0;
+  --accent:#229977;
 
-#ajustes-menu{
-  position:absolute;top:110%;right:0;
-  background:var(--card,#fff);color:var(--txt,#222);
-  border-radius:.9em;box-shadow:0 4px 20px rgba(0,0,0,.15);
-  padding:1.2em 1.4em;width:230px;z-index:1000;
-  transform-origin:top right;transform:scaleY(0);opacity:0;
-  transition:transform .18s ease,opacity .18s;
+  --button-bg:#017187;
+  --button-text:#ffffff;
+  --button-bg-hover:#229977;
 }
-#ajustes-menu.open{transform:scaleY(1);opacity:1}
 
-#ajustes-menu h2{margin:0 0 .9em;font-size:1.2em;text-align:center}
-.aj-list{display:grid;gap:.6em}
-.aj-list button{
-  background:#017187;color:#fff;border:none;border-radius:.5em;
-  padding:.55em;font-size:.9em;cursor:pointer;transition:background .18s;
+/********  dark-mode  ********/
+body.dark-mode,
+body.modo-oscuro{
+  --main-bg:#121212;
+  --card-bg:#1f1f1f;
+  --header-bg:#02819a;
+  --nav-link:#e0f4ff;
+  --nav-link-hover:#2ea8c1;
+  --accent:#35c287;
+
+  --button-bg:#02819a;
+  --button-text:#ffffff;
+  --button-bg-hover:#2ea8c1;
 }
-.aj-list button.full{grid-column:1/-1}
-.aj-list button:hover,.aj-list button:focus{background:#229977}
 
-/*   accesibilidad-colors ya existentes   */
-body.modo-oscuro{--card:#1f1f1f;--txt:#e0e0e0}         /* etc. */
-body.alto-contraste{--card:#000;--txt:#ff0}
-body.daltonico{--card:#e3f6fd;--txt:#003049}
+/********  reset básico y nav  ********/
+body{
+  background:var(--main-bg);
+  font-family:'Segoe UI',Arial,sans-serif;
+  color:#222;
+  margin:0;
+}
+body.dark-mode{color:#e0e0e0}
+
+header nav{
+  background:var(--header-bg);
+  padding:1.1em 0;
+}
+header nav ul{
+  list-style:none;
+  display:flex;
+  justify-content:center;
+  gap:1.6em;
+  margin:0;
+  padding:0;
+}
+header nav a{
+  color:var(--nav-link);
+  font-weight:600;
+  text-decoration:none;
+  padding:.55em 1.25em;
+  border-radius:.6em;
+  transition:background .2s,color .2s;
+}
+header nav a[aria-current="page"],
+header nav a:hover{
+  background:var(--nav-link-hover);
+  color:#105864;
+}
+
+/********  tarjetas genéricas  ********/
+.card{
+  background:var(--card-bg);
+  border-radius:1.25em;
+  box-shadow:0 4px 28px rgba(1,113,135,.08);
+  padding:2.4em 2.1em;
+  margin:2.4em auto;
+  max-width:980px;
+}
+@media(max-width:700px){
+  .card{padding:1.2em}
+}
+
+/********  hero  ********/
+.hero h1{
+  margin:0 0 .55em 0;
+  font-size:2.2em;
+  color:var(--accent);
+}
+.hero p{
+  font-size:1.18em;
+  line-height:1.55;
+}
+
+/********  BOTONES DE FILTRO  ********/
+.filtros{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.2em;
+  justify-content:center;
+}
+.btn-filtro{
+  background:var(--button-bg);
+  color:var(--button-text);
+  border:none;
+  border-radius:.8em;
+  padding:.8em 1.9em;
+  font-size:1.15em;
+  font-weight:700;
+  cursor:pointer;
+  transition:background .18s,transform .18s;
+}
+.btn-filtro:hover{
+  background:var(--button-bg-hover);
+  transform:translateY(-2px);
+}
+.btn-filtro.activo{
+  background:var(--accent);
+}
+
+/********  GRID DE ACCIONES  ********/
+.grid-acciones{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:1.8em;
+  max-width:980px;
+  margin:2.2em auto;
+}
+.accion-card{
+  background:var(--card-bg);
+  border-left:6px solid var(--accent);
+  border-radius:1em;
+  padding:1.6em 1.8em;
+  box-shadow:0 4px 18px rgba(1,113,135,.05);
+  transition:transform .18s,box-shadow .18s;
+}
+.accion-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 26px rgba(1,113,135,.1);
+}
+.accion-card h2{
+  margin:.1em 0 .5em 0;
+  color:var(--header-bg);
+  font-size:1.35em;
+}
+
+/********  FOOTER  ********/
+footer{
+  text-align:center;
+  background:var(--header-bg);
+  color:#fff;
+  margin-top:2.8em;
+  padding:1.35em 0;
+  border-radius:0 0 1.3em 1.3em;
+}
+
+/********  responsive hero font  ********/
+@media(max-width:700px){
+  .hero h1{font-size:1.7em}
+  .btn-filtro{padding:.7em 1.5em;font-size:1.05em}
+}
