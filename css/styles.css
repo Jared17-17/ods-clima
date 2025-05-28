@@ -1,29 +1,285 @@
-:root{
-  --bg:#f8f9fa;--card:#fff;--head:#017187;--accent:#229977;
-  --txt:#222;--btn:#017187;--btn-hov:#229977;
+:root {
+  --main-bg: #f4f4f4;
+  --main-text: #222;
+  --card-bg: #fff;
+  --card-shadow: 0 4px 22px #0003;
+  --input-bg: #fafbfc;
+  --font-size: 17px;
+  --font-family: 'Segoe UI', Arial, sans-serif;
+  --input-text: #222;
+  --input-border: #b3b3b3;
+  --button-bg: #3794ff;
+  --button-bg-hover: #2065a2;
+  --button-text: #fff;
+  --daltonic-main-bg: #e3f6fd;
+  --daltonic-main-text: #003049;
+  --daltonic-card-bg: #f1faee;
 }
-body.dark-mode{
-  --bg:#121212;--card:#1f1f1f;--head:#02819a;--accent:#35c287;
-  --txt:#e0e0e0;--btn:#02819a;--btn-hov:#2ea8c1;
+
+body {
+  background: var(--main-bg);
+  color: var(--main-text);
+  font-size: 17px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  transition: background .2s, color .2s;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',Arial,sans-serif}
-header nav{background:var(--head);padding:1.1em 0}
-header nav ul{display:flex;justify-content:center;gap:1.6em;list-style:none}
-header nav a{color:#fff;font-weight:600;padding:.55em 1.25em;border-radius:.6em;text-decoration:none;transition:.2s}
-header nav a:hover,header nav a[aria-current]{background:#b3d8e0;color:#105864}
-#ajustes-wrapper{position:relative;display:inline-block}
-#ajustesBtn{background:#333;color:#fff;border:none;border-radius:.6em;padding:.4em 1em;cursor:pointer}
-#aj-panel{position:absolute;top:110%;right:0;background:var(--card);box-shadow:0 4px 16px rgba(0,0,0,.15);border-radius:.8em;padding:1em;display:grid;gap:.6em;min-width:170px}
-#aj-panel button{background:var(--btn);color:#fff;border:none;padding:.5em 1em;border-radius:.5em;cursor:pointer;font-size:.9em}
-#aj-panel button:hover{background:var(--btn-hov)}
-[hidden]{display:none!important}
-.card{background:var(--card);border-radius:1.3em;box-shadow:0 4px 28px rgba(1,113,135,.08);padding:2.4em 2.1em;margin:3em auto;max-width:980px}
-.btn-primary,.btn-outline{display:inline-block;font-weight:700;border-radius:.8em;padding:1em 2em;text-decoration:none;transition:.18s;font-size:1.05em}
-.btn-primary{background:var(--btn);color:#fff}
-.btn-primary:hover{background:var(--btn-hov)}
-.btn-outline{border:2px solid var(--btn);color:var(--btn)}
-.btn-outline:hover{background:var(--btn);color:#fff}
-footer{text-align:center;background:var(--head);color:#fff;border-radius:0 0 1.3em 1.3em;padding:1.4em 0;margin-top:3em}
-.grid{display:grid;gap:2.2em}
-@media(max-width:800px){.hide-md{display:none}}
+
+header nav {
+  background: #006476;
+  padding: 1em 0 1em 0;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color .2s;
+  font-size: 1.12em;
+  letter-spacing: .1px;
+  padding: .1em .7em;
+  border-radius: .3em;
+}
+nav a[aria-current="page"] {
+  background: #378ba6;
+}
+nav a:hover, nav a:focus {
+  color: #ffd166;
+  background: #1a5065;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.5em 0 2em 0;
+}
+.card {
+  background: var(--card-bg);
+  border-radius: 1.1em;
+  box-shadow: var(--card-shadow);
+  padding: 2.2em 2.3em 2em 2.3em;
+  margin-bottom: 1.5em;
+  width: 100%;
+  max-width: 590px;
+  color: var(--main-text);
+}
+.contact-card h1 {
+  margin-top: 0;
+  font-size: 2em;
+  font-weight: bold;
+}
+.info-card {
+  font-size: 1.07em;
+}
+form .form-group {
+  margin-bottom: 1.3em;
+}
+form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: .45em;
+  letter-spacing: .2px;
+  color: var(--main-text);
+}
+form input, form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: .3em;
+  padding: .86em .95em;
+  border-radius: .5em;
+  border: 2px solid var(--input-border);
+  font-size: 1.11em;
+  background: var(--input-bg);
+  color: var(--input-text);
+  transition: border .2s, box-shadow .2s, background .2s, color .2s;
+  box-sizing: border-box;
+}
+form input:focus, form textarea:focus {
+  border-color: #0bafc1;
+  outline: none;
+  box-shadow: 0 2px 10px #1bb7ce33;
+}
+form textarea { min-height: 105px; }
+.btn-enviar {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: .55em;
+  padding: .85em 2.2em;
+  font-size: 1.12em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1.3em;
+  margin-bottom: .6em;
+  box-shadow: 0 2px 10px #3794ff2c;
+  transition: background .18s, box-shadow .18s;
+  letter-spacing: .5px;
+}
+.btn-enviar:hover, .btn-enviar:focus {
+  background: var(--button-bg-hover);
+  box-shadow: 0 4px 20px #2065a247;
+}
+.form-errors {
+  background: #ffd6d6;
+  color: #c62828;
+  margin: 1.1em 0 1.2em 0;
+  padding: .83em 1.2em;
+  border-radius: .7em;
+  font-size: 1.09em;
+  letter-spacing: .1px;
+}
+.form-privacidad {
+  margin-top: 1.3em;
+  font-size: 1.01em;
+  color: #b5c3c8;
+}
+.captcha-section {
+  margin: 1.5em 0 1.3em 0;
+  padding-bottom: 1em;
+}
+.captcha-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2em;
+  margin-bottom: .3em;
+}
+#captchaImages {
+  display: flex;
+  gap: 1.15em;
+  margin-bottom: .25em;
+}
+#captchaImages img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: .7em;
+  border: 2px solid #bbb;
+  transition: border .18s, box-shadow .18s;
+  background: #fff;
+  box-shadow: 0 2px 8px #0002;
+  cursor: pointer;
+}
+#captchaImages img:active, #captchaImages img.selected {
+  border: 2.5px solid #229977;
+  box-shadow: 0 2px 12px #22997755;
+}
+.btn-daltonico {
+  background: #ebb10d;
+  color: #222;
+  border: none;
+  border-radius: .4em;
+  font-weight: 700;
+  padding: .62em 1.25em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background .2s;
+  margin-left: 0.5em;
+  box-shadow: 0 2px 8px #0002;
+}
+.btn-daltonico[aria-pressed="true"] {
+  background: #207b8e;
+  color: #fff;
+}
+.btn-daltonico:focus, .btn-daltonico:hover {
+  outline: 2px solid #207b8e;
+  background: #f6c23e;
+}
+.robot-checkbox {
+  margin: 1.4em 0 0.8em 0;
+  font-size: 1.13em;
+  display: flex;
+  align-items: center;
+  gap: .85em;
+  background: var(--input-bg);
+  padding: .77em 1.3em;
+  border-radius: .7em;
+  box-shadow: 0 1px 7px #2224;
+  border: 2px solid var(--input-border);
+  color: var(--input-text);
+}
+.robot-checkbox input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: #3794ff;
+  margin-right: .2em;
+}
+.robot-checkbox label {
+  user-select: none;
+  font-weight: 700;
+  letter-spacing: .1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--input-text);
+}
+.robot-icon {
+  font-size: 1.3em;
+  margin-right: .32em;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2em;
+  padding: 1em 0;
+  background: #005f73;
+  color: #fff;
+  font-size: 1.05em;
+  letter-spacing: .1px;
+  border-radius: 0 0 1.2em 1.2em;
+}
+
+@media (max-width: 650px) {
+  .card { padding: 1.2em 0.5em 1.3em 0.5em; }
+  .captcha-label-row { flex-direction: column; align-items: flex-start; gap: 0.7em;}
+  #captchaImages img { width: 49px; height: 49px; }
+  .robot-checkbox { padding: .7em .5em; }
+}
+
+/* Accesibilidad (altos contrastes, daltonismo, modo oscuro, por clases de body) */
+body.modo-oscuro {
+  --main-bg: #181a1b;
+  --main-text: #f4f4f4;
+  --card-bg: #23242a;
+  --input-bg: #1a1b1e;
+  --input-text: #f4f4f4;
+  --input-border: #404352;
+  --card-shadow: 0 4px 22px #0006;
+}
+body.daltonico {
+  --main-bg: #e3f6fd;
+  --main-text: #003049;
+  --card-bg: #f1faee;
+  --input-bg: #fffbea;
+  --input-text: #003049;
+  --input-border: #ffb703;
+}
+body.alto-contraste {
+  --main-bg: #000;
+  --main-text: #ff0;
+  --card-bg: #000;
+  --input-bg: #000;
+  --input-text: #ff0;
+  --input-border: #ff0;
+}
+
+
+
+
+
+/*  Regla global: en móviles reduce paddings y espacios si quieres.  */
+.device-mobile .card          { padding: 1.4em 1.2em; }
+.device-mobile header nav ul  { gap: 1em; }
+.device-mobile h1             { font-size: 1.6em; }
+.device-mobile h2             { font-size: 1.25em; }
+
+/*  Estilos por defecto siguen igual en escritorio gracias a .device-desktop  */
