@@ -1,123 +1,108 @@
-// accesibilidad.js
-
-(function waitForAjustes() {
-  if (document.getElementById('ajustesBtn') && document.getElementById('ajustes-modal')) {
-    iniciarAjustes();
-  } else {
-    setTimeout(waitForAjustes, 100);
-  }
-})();
 
 function iniciarAjustes() {
-  const btn = document.getElementById('ajustesBtn');
-  const modal = document.getElementById('ajustes-modal');
-  const fondo = document.getElementById('ajustes-modal-bg');
-  const cerrar = document.getElementById('ajustesCerrar');
+  const ajustesBtn = document.getElementById("ajustesBtn");
+  const ajustesModal = document.getElementById("ajustes-modal");
+  const modalBg = document.getElementById("ajustes-modal-bg");
+  const cerrarBtn = document.getElementById("ajustesCerrar");
 
-  btn.addEventListener('click', () => {
-    modal.classList.remove('oculto');
-    fondo.classList.add('visible');
-  });
-  cerrar.addEventListener('click', () => {
-    modal.classList.add('oculto');
-    fondo.classList.remove('visible');
-  });
-  fondo.addEventListener('click', () => {
-    modal.classList.add('oculto');
-    fondo.classList.remove('visible');
+  const toggleBtn = (btn, activeText, inactiveText, isActive) => {
+    btn.textContent = isActive ? inactiveText : activeText;
+    btn.dataset.active = isActive ? "true" : "false";
+  };
+
+  ajustesBtn.addEventListener("click", () => {
+    const isOpen = ajustesModal.classList.contains("oculto") === false;
+    ajustesModal.classList.toggle("oculto", isOpen);
+    modalBg.classList.toggle("oculto", isOpen);
   });
 
-  const save = (key, value) => localStorage.setItem(key, value);
-  const load = (key, def) => localStorage.getItem(key) ?? def;
+  cerrarBtn.addEventListener("click", () => {
+    ajustesModal.classList.add("oculto");
+    modalBg.classList.add("oculto");
+  });
 
-  // Tamaño de fuente
-  let fontSize = parseInt(load('fontSize', '17'));
-  document.documentElement.style.setProperty('--font-size', fontSize + 'px');
-  document.body.style.fontSize = fontSize + 'px';
+  modalBg.addEventListener("click", () => cerrarBtn.click());
 
-  document.getElementById('fontUp').onclick = () => {
-    if (fontSize < 48) fontSize += 2;
-    document.documentElement.style.setProperty('--font-size', fontSize + 'px');
-    document.body.style.fontSize = fontSize + 'px';
-    save('fontSize', fontSize);
-  };
-  document.getElementById('fontDown').onclick = () => {
-    if (fontSize > 10) fontSize -= 2;
-    document.documentElement.style.setProperty('--font-size', fontSize + 'px');
-    document.body.style.fontSize = fontSize + 'px';
-    save('fontSize', fontSize);
-  };
-
-  // Cambiar fuente
-  const fonts = ["'Segoe UI', sans-serif", "'Georgia', serif", "'Courier New', monospace"];
-  let fontIndex = parseInt(load('fontIndex', '0'));
-  document.documentElement.style.setProperty('--font-family', fonts[fontIndex]);
-  document.body.style.fontFamily = fonts[fontIndex];
-
-  document.getElementById('fontFamily').onclick = () => {
-    fontIndex = (fontIndex + 1) % fonts.length;
-    document.documentElement.style.setProperty('--font-family', fonts[fontIndex]);
-    document.body.style.fontFamily = fonts[fontIndex];
-    save('fontIndex', fontIndex);
-  };
-
-  let dark = load('darkMode', 'false') === 'true';
-  document.body.classList.toggle('modo-oscuro', dark);
-  document.getElementById('darkMode').onclick = () => {
-    dark = !dark;
-    save('darkMode', dark);
-    document.body.classList.toggle('modo-oscuro', dark);
-  };
-
-  let contrast = load('highContrast', 'false') === 'true';
-  document.body.classList.toggle('alto-contraste', contrast);
-  document.getElementById('highContrast').onclick = () => {
-    contrast = !contrast;
-    save('highContrast', contrast);
-    document.body.classList.toggle('alto-contraste', contrast);
-  };
-
-  let daltonic = load('daltonico', 'false') === 'true';
-  document.body.classList.toggle('daltonico', daltonic);
-  document.getElementById('daltonico').onclick = () => {
-    daltonic = !daltonic;
-    save('daltonico', daltonic);
-    document.body.classList.toggle('daltonico', daltonic);
-  };
-
-  let cursor = load('cursorGrande', 'false') === 'true';
-  document.body.classList.toggle('cursor-grande', cursor);
-  document.getElementById('toggleCursor').onclick = () => {
-    cursor = !cursor;
-    save('cursorGrande', cursor);
-    document.body.classList.toggle('cursor-grande', cursor);
-  };
-
-  let noImg = load('imagenesOcultas', 'false') === 'true';
-  document.querySelectorAll('img').forEach(img => img.classList.toggle('oculta', noImg));
-  document.getElementById('removeImages').onclick = () => {
-    noImg = !noImg;
-    save('imagenesOcultas', noImg);
-    document.querySelectorAll('img').forEach(img => img.classList.toggle('oculta', noImg));
-  };
-
-  let noLinks = load('linksDisabled', 'false') === 'true';
-  const aplicarLinks = () => {
-    document.querySelectorAll('a').forEach(link => {
-      link.classList.toggle('resaltado', noLinks);
-      if (noLinks) {
-        link.dataset.href = link.getAttribute('href');
-        link.removeAttribute('href');
-      } else if (link.dataset.href) {
-        link.setAttribute('href', link.dataset.href);
-        delete link.dataset.href;
-      }
+  const setModeToggle = (id, className, activeText, inactiveText) => {
+    const btn = document.getElementById(id);
+    btn.addEventListener("click", () => {
+      const isActive = document.body.classList.toggle(className);
+      toggleBtn(btn, activeText, inactiveText, isActive);
     });
   };
-  aplicarLinks();
-  document.getElementById('toggleLinks').onclick = () => {
-    noLinks = !noLinks;
-    save('linksDisabled', noLinks);
-    aplicarLinks();
-  };
+
+  // Modos de visualización
+  setModeToggle("darkMode", "modo-oscuro", "Modo oscuro", "Modo claro");
+  setModeToggle("highContrast", "alto-contraste", "Alto contraste", "Modo normal");
+  setModeToggle("daltonico", "daltonico", "Daltonismo", "Modo normal");
+  setModeToggle("toggleCursor", "cursor-grande", "Cursor grande", "Cursor normal");
+  setModeToggle("removeImages", "sin-imagenes", "Ocultar imágenes", "Mostrar imágenes");
+
+  // Aumentar y reducir fuente
+  const fontSizeSteps = [16, 18, 20, 22, 24];
+  let currentFontSizeIndex = 0;
+  document.getElementById("fontUp").addEventListener("click", () => {
+    if (currentFontSizeIndex < fontSizeSteps.length - 1) {
+      currentFontSizeIndex++;
+      document.body.style.fontSize = fontSizeSteps[currentFontSizeIndex] + "px";
+    }
+  });
+  document.getElementById("fontDown").addEventListener("click", () => {
+    if (currentFontSizeIndex > 0) {
+      currentFontSizeIndex--;
+      document.body.style.fontSize = fontSizeSteps[currentFontSizeIndex] + "px";
+    }
+  });
+
+  // Cambiar fuente
+  const fonts = ["'Segoe UI'", "'Arial'", "'Verdana'", "'Tahoma'", "'Georgia'"];
+  let currentFont = 0;
+  document.getElementById("fontFamily").addEventListener("click", () => {
+    currentFont = (currentFont + 1) % fonts.length;
+    document.body.style.fontFamily = fonts[currentFont];
+  });
+
+  // Desactivar links
+  const toggleLinksBtn = document.getElementById("toggleLinks");
+  let linksDisabled = false;
+  toggleLinksBtn.addEventListener("click", () => {
+    const allLinks = document.querySelectorAll("a");
+    allLinks.forEach(a => {
+      if (!linksDisabled) {
+        a.dataset.href = a.getAttribute("href");
+        a.removeAttribute("href");
+        a.style.outline = "2px dashed red";
+        a.style.pointerEvents = "none";
+      } else {
+        a.setAttribute("href", a.dataset.href);
+        a.style.outline = "";
+        a.style.pointerEvents = "";
+      }
+    });
+    linksDisabled = !linksDisabled;
+    toggleLinksBtn.textContent = linksDisabled ? "Activar links" : "Desactivar links";
+  });
+
+  // Reset total
+  document.getElementById("resetTodo").addEventListener("click", () => {
+    document.body.className = "";
+    document.body.style.fontSize = "";
+    document.body.style.fontFamily = "";
+    document.querySelectorAll("a").forEach(a => {
+      if (a.dataset.href) {
+        a.setAttribute("href", a.dataset.href);
+        a.removeAttribute("data-href");
+      }
+      a.style.outline = "";
+      a.style.pointerEvents = "";
+    });
+    linksDisabled = false;
+    // Restaurar textos de botones
+    document.getElementById("darkMode").textContent = "Modo oscuro";
+    document.getElementById("highContrast").textContent = "Alto contraste";
+    document.getElementById("daltonico").textContent = "Daltonismo";
+    document.getElementById("toggleCursor").textContent = "Cursor grande";
+    document.getElementById("removeImages").textContent = "Ocultar imágenes";
+    toggleLinksBtn.textContent = "Desactivar links";
+  });
 }
