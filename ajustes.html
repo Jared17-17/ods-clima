@@ -1,20 +1,10 @@
-<!-- Botón fijo en pantalla, siempre visible -->
-<button id="ajustesBtn" title="Mostrar ajustes de accesibilidad">Ajustes</button>
-
-<!-- Fondo desenfocado y menú de ajustes centrado -->
-<div id="ajustes-modal-bg"></div>
-<div id="ajustes-modal" class="oculto" tabindex="0">
-  <button id="ajustesCerrar" title="Cerrar menú de ajustes">Cerrar</button>
-  <h2>Accesibilidad</h2>
-  <div class="ajustes-botones">
-    <button id="fontUp" title="Aumentar tamaño de fuente">Aumentar fuente</button>
-    <button id="fontDown" title="Disminuir tamaño de fuente">Disminuir fuente</button>
-    <button id="fontFamily" title="Cambiar fuente">Cambiar fuente</button>
-    <button id="darkMode" title="Modo oscuro">Modo oscuro</button>
-    <button id="highContrast" title="Alto contraste">Alto contraste</button>
-    <button id="daltonico" title="Modo daltonismo">Daltonismo</button>
-    <button id="toggleCursor" title="Cambiar cursor">Cursor grande</button>
-    <button id="removeImages" title="Sin imágenes">Ocultar imágenes</button>
-    <button id="toggleLinks" title="Links">Resaltar/Desactivar links</button>
+<div id="ajustes-wrapper">
+  <button id="ajustesBtn" aria-expanded="false">Ajustes</button>
+  <div id="aj-panel" hidden>
+    <button data-action="dark">Modo oscuro</button>
+    <button data-action="dalton">Modo daltonismo</button>
+    <button data-action="inc">A+</button>
+    <button data-action="dec">A-</button>
+    <button data-action="reset">Reset</button>
   </div>
 </div>
