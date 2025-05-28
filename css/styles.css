@@ -283,18 +283,3 @@ body.alto-contraste {
 .device-mobile h2             { font-size: 1.25em; }
 
 /*  Estilos por defecto siguen igual en escritorio gracias a .device-desktop  */
-
-
-
-/* NAV corregido: centramos el menú y mostramos el botón ajustes a la derecha */
-header nav{
-  display:flex;                 /*  ←  NUEVO  */
-  justify-content:center;       /* mantiene ul centrado */
-  align-items:center;
-  background:var(--head,#017187);
-  padding:1.1em 0;
-}
-header nav ul{margin:0;padding:0;list-style:none;display:flex;gap:1.6em}
-
-/* separa el wrapper de ajustes para que no quede pegado al menú */
-#ajustes-wrapper{margin-left:auto}
