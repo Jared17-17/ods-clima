@@ -270,6 +270,7 @@ form textarea{min-height:105px}
 
 
 
-/* Daltonismo: oculta captcha visual y su botón */
-body.daltonico .captcha-section   {display:none}
-body.daltonico .btn-daltonico     {display:none}
+/* ─── Daltonismo: oculta solo la instrucción y las imágenes,    */
+/*      mantiene el botón para volver al modo normal ─────────── */
+body.daltonico #captchaImgLabel,
+body.daltonico #captchaImages {display:none}
