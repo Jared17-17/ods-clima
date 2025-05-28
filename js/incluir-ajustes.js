@@ -1,20 +1,29 @@
 // js/incluir-ajustes.js
 document.addEventListener('DOMContentLoaded', () => {
   const inject = document.getElementById('ajustes-inject');
-  // Si estamos dentro de /pages/, subimos un nivel para encontrar ajustes.html
+  if (!inject) return;
+
+  // Si la URL contiene "/pages/", subimos un nivel para encontrar ajustes.html
   const path = window.location.pathname.includes('/pages/')
     ? '../ajustes.html'
     : 'ajustes.html';
 
   fetch(path)
-    .then(resp => {
-      if (!resp.ok) throw new Error(`No pude cargar ${path}`);
-      return resp.text();
+    .then(response => {
+      if (!response.ok) {
+        console.error(`Error cargando ajustes desde ${path}:`, response.status);
+        return '';
+      }
+      return response.text();
     })
     .then(html => {
       inject.innerHTML = html;
-      // Una vez inyectado, lanzamos el init de accesibilidad
-      if (window.iniciarAjustes) iniciarAjustes();
+      // Después de inyectar el HTML, inicializamos los controles de accesibilidad
+      if (typeof iniciarAjustes === 'function') {
+        iniciarAjustes();
+      } else {
+        console.warn('iniciarAjustes() no está definido en accesibilidad.js');
+      }
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error('Fetch de ajustes fallido:', err));
 });
