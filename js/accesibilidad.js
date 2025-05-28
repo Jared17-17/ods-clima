@@ -23,48 +23,70 @@ function iniciarAjustes() {
 
   modalBg.addEventListener("click", () => cerrarBtn.click());
 
-  const setModeToggle = (id, className, activeText, inactiveText) => {
+  const setModeToggle = (id, className, activeText, inactiveText, key) => {
     const btn = document.getElementById(id);
+    const saved = localStorage.getItem(key) === "true";
+    if (saved) document.body.classList.add(className);
+    toggleBtn(btn, activeText, inactiveText, saved);
+
     btn.addEventListener("click", () => {
       const isActive = document.body.classList.toggle(className);
       toggleBtn(btn, activeText, inactiveText, isActive);
+      localStorage.setItem(key, isActive);
     });
   };
 
-  // Modos de visualización
-  setModeToggle("darkMode", "modo-oscuro", "Modo oscuro", "Modo claro");
-  setModeToggle("highContrast", "alto-contraste", "Alto contraste", "Modo normal");
-  setModeToggle("daltonico", "daltonico", "Daltonismo", "Modo normal");
-  setModeToggle("toggleCursor", "cursor-grande", "Cursor grande", "Cursor normal");
-  setModeToggle("removeImages", "sin-imagenes", "Ocultar imágenes", "Mostrar imágenes");
+  // Modos de visualización persistentes
+  setModeToggle("darkMode", "modo-oscuro", "Modo oscuro", "Modo claro", "modoOscuro");
+  setModeToggle("highContrast", "alto-contraste", "Alto contraste", "Modo normal", "altoContraste");
+  setModeToggle("daltonico", "daltonico", "Daltonismo", "Modo normal", "modoDaltonico");
+  setModeToggle("toggleCursor", "cursor-grande", "Cursor grande", "Cursor normal", "cursorGrande");
+  setModeToggle("removeImages", "sin-imagenes", "Ocultar imágenes", "Mostrar imágenes", "sinImagenes");
 
-  // Aumentar y reducir fuente
+  // Fuente y tamaño
   const fontSizeSteps = [16, 18, 20, 22, 24];
-  let currentFontSizeIndex = 0;
+  let currentFontSizeIndex = parseInt(localStorage.getItem("fontSizeIndex")) || 0;
+  document.body.style.fontSize = fontSizeSteps[currentFontSizeIndex] + "px";
+
   document.getElementById("fontUp").addEventListener("click", () => {
     if (currentFontSizeIndex < fontSizeSteps.length - 1) {
       currentFontSizeIndex++;
       document.body.style.fontSize = fontSizeSteps[currentFontSizeIndex] + "px";
+      localStorage.setItem("fontSizeIndex", currentFontSizeIndex);
     }
   });
+
   document.getElementById("fontDown").addEventListener("click", () => {
     if (currentFontSizeIndex > 0) {
       currentFontSizeIndex--;
       document.body.style.fontSize = fontSizeSteps[currentFontSizeIndex] + "px";
+      localStorage.setItem("fontSizeIndex", currentFontSizeIndex);
     }
   });
 
-  // Cambiar fuente
   const fonts = ["'Segoe UI'", "'Arial'", "'Verdana'", "'Tahoma'", "'Georgia'"];
-  let currentFont = 0;
+  let currentFont = parseInt(localStorage.getItem("fontFamilyIndex")) || 0;
+  document.body.style.fontFamily = fonts[currentFont];
+
   document.getElementById("fontFamily").addEventListener("click", () => {
     currentFont = (currentFont + 1) % fonts.length;
     document.body.style.fontFamily = fonts[currentFont];
+    localStorage.setItem("fontFamilyIndex", currentFont);
   });
 
-  // Desactivar links
+  // Links
   const toggleLinksBtn = document.getElementById("toggleLinks");
-  let linksDisabled = false;
+  let linksDisabled = localStorage.getItem("linksDisabled") === "true";
+  if (linksDisabled) {
+    document.querySelectorAll("a").forEach(a => {
+      a.dataset.href = a.getAttribute("href");
+      a.removeAttribute("href");
+      a.style.outline = "2px dashed red";
+      a.style.pointerEvents = "none";
+    });
+    toggleLinksBtn.textContent = "Activar links";
+  }
+
   toggleLinksBtn.addEventListener("click", () => {
     const allLinks = document.querySelectorAll("a");
     allLinks.forEach(a => {
@@ -74,13 +96,17 @@ function iniciarAjustes() {
         a.style.outline = "2px dashed red";
         a.style.pointerEvents = "none";
       } else {
-        a.setAttribute("href", a.dataset.href);
+        if (a.dataset.href) {
+          a.setAttribute("href", a.dataset.href);
+          a.removeAttribute("data-href");
+        }
         a.style.outline = "";
         a.style.pointerEvents = "";
       }
     });
     linksDisabled = !linksDisabled;
     toggleLinksBtn.textContent = linksDisabled ? "Activar links" : "Desactivar links";
+    localStorage.setItem("linksDisabled", linksDisabled);
   });
 
   // Reset total
@@ -96,8 +122,10 @@ function iniciarAjustes() {
       a.style.outline = "";
       a.style.pointerEvents = "";
     });
+
+    localStorage.clear();
     linksDisabled = false;
-    // Restaurar textos de botones
+
     document.getElementById("darkMode").textContent = "Modo oscuro";
     document.getElementById("highContrast").textContent = "Alto contraste";
     document.getElementById("daltonico").textContent = "Daltonismo";
