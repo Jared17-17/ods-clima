@@ -138,17 +138,5 @@
   <script src="../seguridad/seguridad.js" defer></script>
   <script src="../js/accesibilidad.js"></script>
 
-
-  <!-- Inyección del botón de ajustes -->
-  <script>
-    fetch('../ajustes.html')
-      .then(r => r.text())
-      .then(html => {
-        document.getElementById('ajustes-inject').outerHTML = html;
-        const s = document.createElement('script');
-        s.src = '../js/accesibilidad.js';
-        document.body.appendChild(s);
-      });
-  </script>
 </body>
 </html>
