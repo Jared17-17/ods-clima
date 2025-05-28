@@ -1,20 +1,26 @@
-<!-- Botón fijo en pantalla, siempre visible -->
-<button id="ajustesBtn" title="Mostrar ajustes de accesibilidad">Ajustes</button>
+<!-- contenedor relativo -->
+<div id="ajustes-wrapper">
+  <button id="ajustesBtn" aria-expanded="false" title="Mostrar ajustes">⚙ Ajustes</button>
 
-<!-- Fondo desenfocado y menú de ajustes centrado -->
-<div id="ajustes-modal-bg"></div>
-<div id="ajustes-modal" class="oculto" tabindex="0">
-  <button id="ajustesCerrar" title="Cerrar menú de ajustes">Cerrar</button>
-  <h2>Accesibilidad</h2>
-  <div class="ajustes-botones">
-    <button id="fontUp" title="Aumentar tamaño de fuente">Aumentar fuente</button>
-    <button id="fontDown" title="Disminuir tamaño de fuente">Disminuir fuente</button>
-    <button id="fontFamily" title="Cambiar fuente">Cambiar fuente</button>
-    <button id="darkMode" title="Modo oscuro">Modo oscuro</button>
-    <button id="highContrast" title="Alto contraste">Alto contraste</button>
-    <button id="daltonico" title="Modo daltonismo">Daltonismo</button>
-    <button id="toggleCursor" title="Cambiar cursor">Cursor grande</button>
-    <button id="removeImages" title="Sin imágenes">Ocultar imágenes</button>
-    <button id="toggleLinks" title="Links">Resaltar/Desactivar links</button>
+  <!-- fondo atenuado opcional; lo dejamos para que tu JS siga alternándolo -->
+  <div id="ajustes-modal-bg" class="oculto"></div>
+
+  <!-- panel desplegable -->
+  <div id="ajustes-modal" class="oculto" tabindex="-1">
+    <button id="ajustesCerrar" title="Cerrar ajustes">✕</button>
+    <h2>Accesibilidad</h2>
+
+    <div class="ajustes-botones">
+      <button id="fontUp">Aumentar fuente</button>
+      <button id="fontDown">Disminuir fuente</button>
+      <button id="fontFamily">Cambiar fuente</button>
+      <button id="darkMode">Modo oscuro</button>
+      <button id="highContrast">Alto contraste</button>
+      <button id="daltonico">Daltonismo</button>
+      <button id="toggleCursor">Cursor grande</button>
+      <button id="removeImages">Ocultar imágenes</button>
+      <button id="toggleLinks">Links</button>
+      <button id="resetTodo" class="full">Reset</button>
+    </div>
   </div>
 </div>
