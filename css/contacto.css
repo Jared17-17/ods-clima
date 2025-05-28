@@ -265,3 +265,11 @@ form textarea{min-height:105px}
   #captchaImages img{width:52px;height:52px}
   .content-wrapper{flex-direction:column}
 }
+
+
+
+
+
+/* Daltonismo: oculta captcha visual y su botón */
+body.daltonico .captcha-section   {display:none}
+body.daltonico .btn-daltonico     {display:none}
