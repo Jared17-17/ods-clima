@@ -7,12 +7,12 @@
 }
 #ajustesBtn:hover,#ajustesBtn:focus{background:#229977}
 
-/* ---------- fondo atenuado opcional ---------- */
+/* ---------- fondo atenuado ---------- */
 #ajustes-modal-bg{
   position:fixed;inset:0;background:rgba(0,0,0,.35);backdrop-filter:blur(2px);
-  z-index:998;display:none;
+  z-index:998;
 }
-#ajustes-modal-bg.visible{display:block}
+#ajustes-modal-bg.oculto{display:none}
 
 /* ---------- panel desplegable ---------- */
 #ajustes-modal{
@@ -23,7 +23,9 @@
   transform-origin:top right;transform:scaleY(0);opacity:0;
   transition:transform .18s ease,opacity .18s;
 }
-#ajustes-modal.visible{transform:scaleY(1);opacity:1}
+#ajustes-modal.oculto{display:none}
+#ajustes-modal:not(.oculto){transform:scaleY(1);opacity:1}
+
 
 /* cerrar */
 #ajustesCerrar{
