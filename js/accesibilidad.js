@@ -132,5 +132,5 @@ function iniciarAjustes() {
     document.getElementById("toggleCursor").textContent = "Cursor grande";
     document.getElementById("removeImages").textContent = "Ocultar imágenes";
     toggleLinksBtn.textContent = "Desactivar links";
-  });
+  })
 }
