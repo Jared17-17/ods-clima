@@ -36,14 +36,12 @@ function iniciarAjustes() {
     });
   };
 
-  // Modos de visualización persistentes
   setModeToggle("darkMode", "modo-oscuro", "Modo oscuro", "Modo claro", "modoOscuro");
   setModeToggle("highContrast", "alto-contraste", "Alto contraste", "Modo normal", "altoContraste");
   setModeToggle("daltonico", "daltonico", "Daltonismo", "Modo normal", "modoDaltonico");
   setModeToggle("toggleCursor", "cursor-grande", "Cursor grande", "Cursor normal", "cursorGrande");
   setModeToggle("removeImages", "sin-imagenes", "Ocultar imágenes", "Mostrar imágenes", "sinImagenes");
 
-  // Fuente y tamaño
   const fontSizeSteps = [16, 18, 20, 22, 24];
   let currentFontSizeIndex = parseInt(localStorage.getItem("fontSizeIndex")) || 0;
   document.body.style.fontSize = fontSizeSteps[currentFontSizeIndex] + "px";
@@ -74,7 +72,6 @@ function iniciarAjustes() {
     localStorage.setItem("fontFamilyIndex", currentFont);
   });
 
-  // Links
   const toggleLinksBtn = document.getElementById("toggleLinks");
   let linksDisabled = localStorage.getItem("linksDisabled") === "true";
   if (linksDisabled) {
@@ -109,7 +106,6 @@ function iniciarAjustes() {
     localStorage.setItem("linksDisabled", linksDisabled);
   });
 
-  // Reset total
   document.getElementById("resetTodo").addEventListener("click", () => {
     document.body.className = "";
     document.body.style.fontSize = "";
@@ -132,5 +128,5 @@ function iniciarAjustes() {
     document.getElementById("toggleCursor").textContent = "Cursor grande";
     document.getElementById("removeImages").textContent = "Ocultar imágenes";
     toggleLinksBtn.textContent = "Desactivar links";
-  })
+  });
 }
