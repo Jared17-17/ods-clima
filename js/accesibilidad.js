@@ -52,18 +52,14 @@ function iniciarAjustes() {
       document.body.style.fontSize = fontSizeSteps[currentFontSizeIndex] + "px";
       localStorage.setItem("fontSizeIndex", currentFontSizeIndex);
 
-// Crear y aplicar un estilo global para el cursor grande
-const styleCursor = document.createElement("style");
-styleCursor.id = "cursor-style";
-styleCursor.textContent = `
-  body.cursor-grande, body.cursor-grande * {
-    cursor: url('assets/dog.cur'), auto !important;
-  }
-`;
-document.head.appendChild(styleCursor);
-
-
-
+  // Crear y aplicar un estilo global para el cursor grande
+  const styleCursor = document.createElement("style");
+  styleCursor.id = "cursor-style";
+  styleCursor.textContent = `
+    body.cursor-grande, body.cursor-grande * {
+      cursor: url('https://cur.cursors-4u.net/mechanics/mec-2/mec124.cur'), auto !important;
+    }
+  `;
   document.head.appendChild(styleCursor);
 
     }
@@ -145,3 +141,31 @@ document.head.appendChild(styleCursor);
     toggleLinksBtn.textContent = "Desactivar links";
   });
 }
+
+  // Funcionalidad persistente y dinámica para ocultar imágenes
+  const imagenesBtn = document.getElementById("removeImages");
+  let ocultar = localStorage.getItem("sinImagenes") === "true";
+
+  const aplicarOcultarImagenes = () => {
+    const imgs = document.querySelectorAll("img");
+    imgs.forEach(img => {
+      if (ocultar) {
+        img.dataset.src = img.src;
+        img.src = "";
+        img.alt = "(imagen oculta)";
+        img.style.display = "none";
+      } else {
+        if (img.dataset.src) img.src = img.dataset.src;
+        img.style.display = "";
+      }
+    });
+    imagenesBtn.textContent = ocultar ? "Mostrar imágenes" : "Ocultar imágenes";
+    localStorage.setItem("sinImagenes", ocultar);
+  };
+
+  aplicarOcultarImagenes(); // aplicar al cargar
+
+  imagenesBtn.addEventListener("click", () => {
+    ocultar = !ocultar;
+    aplicarOcultarImagenes();
+  });
