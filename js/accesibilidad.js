@@ -52,14 +52,17 @@ function iniciarAjustes() {
       document.body.style.fontSize = fontSizeSteps[currentFontSizeIndex] + "px";
       localStorage.setItem("fontSizeIndex", currentFontSizeIndex);
 
-  // Crear y aplicar un estilo global para el cursor grande
-  const styleCursor = document.createElement("style");
-  styleCursor.id = "cursor-style";
-  styleCursor.textContent = `
+// Crear y aplicar un estilo global para el cursor grande
+const styleCursor = document.createElement("style");
+styleCursor.id = "cursor-style";
+styleCursor.textContent = `
   body.cursor-grande, body.cursor-grande * {
-    cursor: url('http://www.rw-designer.com/cursor-extern.php?id=15370'), auto !important;
+    cursor: url('assets/dog.cur'), auto !important;
   }
 `;
+document.head.appendChild(styleCursor);
+
+
 
   document.head.appendChild(styleCursor);
 
