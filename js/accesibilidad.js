@@ -51,6 +51,17 @@ function iniciarAjustes() {
       currentFontSizeIndex++;
       document.body.style.fontSize = fontSizeSteps[currentFontSizeIndex] + "px";
       localStorage.setItem("fontSizeIndex", currentFontSizeIndex);
+
+  // Crear y aplicar un estilo global para el cursor grande
+  const styleCursor = document.createElement("style");
+  styleCursor.id = "cursor-style";
+  styleCursor.textContent = `
+    body.cursor-grande, body.cursor-grande * {
+      cursor: url('https://cur.cursors-4u.net/mechanics/mec-2/mec124.cur'), auto !important;
+    }
+  `;
+  document.head.appendChild(styleCursor);
+
     }
   });
 
