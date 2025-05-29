@@ -283,3 +283,12 @@ body.alto-contraste {
 .device-mobile h2             { font-size: 1.25em; }
 
 /*  Estilos por defecto siguen igual en escritorio gracias a .device-desktop  */
+
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: var(--main-bg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
