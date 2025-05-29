@@ -56,10 +56,11 @@ function iniciarAjustes() {
   const styleCursor = document.createElement("style");
   styleCursor.id = "cursor-style";
   styleCursor.textContent = `
-    body.cursor-grande, body.cursor-grande * {
-      cursor: url('https://cur.cursors-4u.net/mechanics/mec-2/mec124.cur'), auto !important;
-    }
-  `;
+  body.cursor-grande, body.cursor-grande * {
+    cursor: url('http://www.rw-designer.com/cursor-extern.php?id=15370'), auto !important;
+  }
+`;
+
   document.head.appendChild(styleCursor);
 
     }
