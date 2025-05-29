@@ -181,3 +181,36 @@ footer {
     font-size: 1.3em;
   }
 }
+
+
+/* Corrección para modo oscuro */
+body.modo-oscuro {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+body.modo-oscuro .card,
+body.modo-oscuro section {
+  background-color: #222;
+  color: #e2e2e2;
+  border-color: #444;
+}
+
+body.modo-oscuro h1,
+body.modo-oscuro h2,
+body.modo-oscuro h3,
+body.modo-oscuro strong {
+  color: #66ffcc;
+}
+
+body.modo-oscuro .info {
+  color: #ddd;
+}
+
+body.modo-oscuro a {
+  color: #8fdfff;
+}
+
+body.modo-oscuro .card span {
+  color: #ccc;
+}
