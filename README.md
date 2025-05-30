@@ -1,71 +1,77 @@
-# ODS Acción por el Clima 🌱
+# 🌍 ODS Acción por el Clima
 
-Sitio web informativo desarrollado como proyecto académico para la materia de Desarrollo Web Accesible y Seguridad Web.  
-Enfocado en el ODS 13: Acción por el Clima, con enfoque en accesibilidad, buenas prácticas de seguridad y despliegue en un entorno público.
+Sitio web informativo desarrollado como proyecto académico para la materia de **Desarrollo Web Accesible y Seguridad Web**.
+
+Enfocado en el ODS 13: **Acción por el Clima**, con un diseño centrado en la accesibilidad, buenas prácticas de seguridad y publicación en un entorno público accesible desde cualquier navegador moderno.
 
 ## 🚀 Enlace al sitio web
 
-[Ver el sitio en línea (GitHub Pages)](https://jared17-17.github.io/ods-clima/)
+📎 [Ver el sitio en línea (GitHub Pages)](https://jared17-17.github.io/ods-clima/)
 
 ---
 
-## 📑 Estructura de páginas
+## 📑 Estructura del sitio
 
-- **Inicio** (`index.html`): Presentación general y bienvenida.
-- **¿Qué es el cambio climático?** (`cambio-climatico.html`): Información clave y contexto del ODS 13.
-- **Acciones diarias** (`acciones.html`): Recomendaciones y hábitos cotidianos para reducir el impacto climático.
-- **CV** (`cv.html`): Currículum Vitae del autor.
-- **Contacto** (`contacto.html`): Formulario de contacto accesible.
+- **Inicio (`index.html`)**: Presentación general y bienvenida.
+- **¿Qué es el cambio climático? (`cambio-climatico.html`)**: Explicación del ODS 13 y su relevancia.
+- **Acciones diarias (`acciones.html`)**: Sugerencias cotidianas para combatir el cambio climático.
+- **Currículum Vitae (`cv.html`)**: Información profesional del autor del sitio.
+- **Contacto (`contacto.html`)**: Formulario de contacto validado y protegido.
 
 ---
 
 ## ♿ Accesibilidad implementada
 
-El sitio incluye las siguientes características de accesibilidad, accesibles desde el botón de ajustes (⚙️ Ajustes) presente en todas las páginas:
+Accesible desde el botón de **⚙️ Ajustes** presente en todas las vistas del sitio. Las funciones fueron diseñadas para funcionar en tiempo real y mantenerse activas entre páginas mediante `localStorage`.
 
-- Aumento y disminución del tamaño de la fuente (hasta 3 veces).
+- Aumento y disminución del tamaño de fuente (hasta 3 veces).
 - Cambio de familia tipográfica.
 - Modo oscuro.
 - Modo alto contraste.
-- Modo daltónico.
-- Cambio de cursor.
-- Opción para ocultar imágenes.
-- Opción para sobresaltar o deshabilitar links.
-- Todos los ajustes se mantienen al navegar entre páginas (persistencia con localStorage).
+- Modo para personas con daltonismo.
+- Cambio de cursor (incluye posibilidad de usar cursor personalizado).
+- Opción para ocultar o mostrar imágenes en tiempo real.
+- Opción para desactivar y resaltar enlaces.
+- Botón de restauración para volver a los valores por defecto.
 
 ---
 
 ## 🛡️ Seguridad Web
 
-- **Sitio servido sobre HTTPS** (certificado por GitHub Pages).
-- **Validación y sanitización de formulario de contacto** para evitar envío de datos maliciosos (validación de email, campos obligatorios, anti-spam).
-- **Protección anti-bots en el formulario de contacto** (pregunta lógica simple tipo captcha).
-- **Aviso de privacidad** sobre el manejo del correo y advertencia de no incluir datos sensibles.
-- **Encabezados de seguridad:**  
-  GitHub Pages incluye automáticamente:
-    - Strict-Transport-Security (HSTS)
-    - X-Content-Type-Options
-    - X-Frame-Options
-    - Referrer-Policy  
-  _(No es posible modificar los encabezados personalizados en GitHub Pages, pero se cumple lo básico por la plataforma)._
-- **Eliminación de archivos sensibles**:  
-  El proyecto no incluye archivos de configuración expuestos ni archivos de respaldo.
-- **Mensajes de error y rutas protegidas:**  
-  No se muestran mensajes de error del servidor ni se exponen rutas internas.
+Se integraron prácticas básicas de seguridad adecuadas a un sitio sin base de datos:
+
+- **HTTPS activo**: Alojado en GitHub Pages (certificado SSL incluido por defecto).
+- **Validación del formulario**:
+  - Campos obligatorios.
+  - Expresiones regulares para formato de correo.
+  - Sanitización básica.
+- **Protección anti-bots**:
+  - CAPTCHA visual mediante selección de imagen.
+- **Privacidad**:
+  - Aviso claro sobre el envío sin cifrado de datos personales.
+- **Encabezados de seguridad** (configurados por GitHub Pages):
+  - `Strict-Transport-Security`
+  - `X-Content-Type-Options`
+  - `X-Frame-Options`
+  - `Referrer-Policy`
+- **Buenas prácticas adicionales**:
+  - No se exponen archivos sensibles (.git, backups, pruebas).
+  - No se muestran errores internos ni rutas inseguras.
 
 ---
 
-## 🛠️ Tecnologías usadas
+## 🛠️ Tecnologías utilizadas
 
-- **HTML5, CSS3, JavaScript** (sin frameworks, código modular).
-- **GitHub Pages** para despliegue público y HTTPS.
-- **FormSubmit** (o servicio similar) para envío de formularios de contacto sin base de datos.
+- HTML5 + CSS3 (con diseño modular y limpio).
+- JavaScript puro (sin frameworks).
+- GitHub Pages (hosting gratuito con HTTPS).
+- [FormSubmit](https://formsubmit.co/) para envío de formularios sin base de datos.
+- LocalStorage para persistencia de ajustes de accesibilidad.
 
 ---
 
-## 🧑‍💻 Instrucciones para clonar y correr localmente
+## 🧑‍💻 Cómo clonar y correr localmente
 
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/jared17-17/ods-clima.git
-   cd ods-clima
+```bash
+git clone https://github.com/jared17-17/ods-clima.git
+cd ods-clima
